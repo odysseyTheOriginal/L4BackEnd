@@ -1,0 +1,1143 @@
+Fundamentals of databases
+& Database design
+IT 1400- Level 1 Semester 2
+Lecture 7
+Thilina Ranbaduge
+tranbaduge@uom.lk
+
+Chapter Outline
+
+
+
+
+Example Database Application (COMPANY)
+Relational Algebra
+ Unary Relational Operations
+ Relational Algebra Operations From Set Theory
+ Binary Relational Operations
+ Additional Relational Operations
+ Examples of Queries in Relational Algebra
+
+
+
+Relational Calculus
+ Tuple Relational Calculus
+ Domain Relational Calculus
+
+2
+
+Relational Query Languages
+Query languages: Allow manipulation and
+retrieval of data from a database.
+ Relational model supports simple, powerful QLs:
+
+
+ Strong
+
+formal foundation based on logic.
+ Allows for much optimization.
+
+
+Query Languages != programming languages!
+ QLs
+
+not expected to be “Turing complete”.
+ QLs not intended to be used for complex calculations.
+ QLs support easy, efficient access to large data sets.
+3
+
+Formal Relational Query Languages
+
+
+Two mathematical Query Languages form the
+basis for “real” languages (e.g. SQL), and for
+implementation:
+ Relational Algebra:
+
+More operational(procedural),
+very useful for representing execution plans.
+
+ Relational Calculus:
+
+Lets users describe what they
+want, rather than how to compute it.
+(Non-operational, declarative.)
+4
+
+Database State for COMPANY
+All examples discussed below refer to the COMPANY database shown here.
+
+5
+
+Relational Algebra
+
+
+The basic set of operations for the relational model is known
+as the relational algebra. These operations enable a user to
+specify basic retrieval requests.
+
+
+
+The result of a retrieval is a new relation, which may have
+been formed from one or more relations. The algebra
+operations thus produce new relations, which can be further
+manipulated using operations of the same algebra.
+
+
+
+A sequence of relational algebra operations forms a
+relational algebra expression, whose result will also be a
+relation that represents the result of a database query (or
+retrieval request).
+6
+
+Unary Relational Operations
+
+
+SELECT Operation
+SELECT operation is used to select a subset of the tuples from a relation that
+satisfy a selection condition. It is a filter that keeps only those tuples that
+satisfy a qualifying condition – those satisfying the condition are selected
+while others are discarded.
+Example: To select the EMPLOYEE tuples whose department number is
+four or those whose salary is greater than $30,000 the following notation is
+used:
+
+DNO = 4 (EMPLOYEE)
+SALARY > 30,000 (EMPLOYEE)
+
+In general, the select operation is denoted by  <selection condition>(R) where the
+symbol  (sigma) is used to denote the select operator, and the selection
+condition is a Boolean expression specified on the attributes of relation R
+
+7
+
+Unary Relational Operations
+SELECT Operation Properties
+
+
+The SELECT operation  <selection condition>(R) produces a relation S that has
+the same schema as R
+
+
+
+The SELECT operation  is commutative; i.e.,
+ <condition1>( < condition2> ( R)) =  <condition2> ( < condition1> ( R))
+
+
+
+A cascaded SELECT operation may be applied in any order; i.e.,
+ <condition1>( < condition2> ( <condition3> ( R))
+=  <condition2> ( < condition3> ( < condition1> ( R)))
+
+
+
+A cascaded SELECT operation may be replaced by a single selection with a
+conjunction of all the conditions; i.e.,
+ <condition1>( < condition2> ( <condition3> ( R))
+=  <condition1> AND < condition2> AND < condition3> ( R)))
+8
+
+Unary Relational Operations (cont.)
+
+9
+
+Unary Relational Operations (cont.)
+
+
+PROJECT Operation
+This operation selects certain columns from the table and discards the other
+columns. The PROJECT creates a vertical partitioning – one with the needed
+columns (attributes) containing results of the operation and other containing
+the discarded Columns.
+
+Example: To list each employee‘s first and last name and salary, the
+following is used:
+
+
+
+LNAME, FNAME,SALARY
+
+(EMPLOYEE)
+
+
+
+
+
+The general form of the project operation is <attribute list>(R) where
+(pi) is the symbol used to represent the project operation and <attribute list>
+is the desired list of attributes from the attributes of relation R.
+The project operation removes any duplicate tuples, so the result of the
+project operation is a set of tuples and hence a valid relation.
+10
+
+Unary Relational Operations (cont.)
+PROJECT Operation Properties
+
+
+The number of tuples in the result of projection
+ <list> (R) is always less or equal to the number of
+tuples in R.
+
+
+
+If the list of attributes includes a key of R, then the
+number of tuples is equal to the number of tuples
+in R.
+
+
+
+ <list1> ( <list2> (R) ) =  <list1> (R) as long as <list2>
+contains the attributes in <list2>
+11
+
+Unary Relational Operations (cont.)
+
+12
+
+Unary Relational Operations (cont.)
+
+
+Rename Operation
+We may want to apply several relational algebra operations one after the other.
+Either we can write the operations as a single relational algebra expression by
+nesting the operations, or we can apply one operation at a time and create
+intermediate result relations. In the latter case, we must give names to the
+relations that hold the intermediate results.
+Example: To retrieve the first name, last name, and salary of all employees who
+work in department number 5, we must apply a select and a project operation.
+We can write a single relational algebra expression as follows:
+
+FNAME, LNAME, SALARY( DNO=5(EMPLOYEE))
+OR We can explicitly show the sequence of operations, giving a name to each
+intermediate relation:
+
+DEP5_EMPS   DNO=5(EMPLOYEE)
+
+RESULT   FNAME, LNAME, SALARY (DEP5_EMPS)
+13
+
+Unary Relational Operations (cont.)
+
+
+Rename Operation (cont.)
+The rename operator is . The general Rename operation can be expressed by
+any of the following forms:
+
+
+
+ S (B1, B2, …, Bn ) ( R) is a renamed relation S based on R with column names
+
+B1, B1, …..Bn.
+
+
+ S (R) is a renamed relation S based on R (which does not specify column
+names).
+
+
+
+ (B1, B2, …, Bn ) ( R) is a renamed relation with column names B1, B1, …..Bn
+which does not specify a new relation name.
+14
+
+Unary Relational Operations (cont.)
+
+15
+
+Relational Algebra Operations From Set Theory
+
+
+UNION Operation
+
+The result of this operation, denoted by R  S, is a relation that includes all
+tuples that are either in R or in S or in both R and S. Duplicate tuples are
+eliminated.
+Example: To retrieve the social security numbers of all employees who either
+work in department 5 or directly supervise an employee who works in
+department 5, we can use the union operation as follows:
+DEP5_EMPS  DNO=5 (EMPLOYEE)
+RESULT1   SSN(DEP5_EMPS)
+
+RESULT2(SSN)   SUPERSSN(DEP5_EMPS)
+RESULT  RESULT1  RESULT2
+
+The union operation produces the tuples that are in either RESULT1 or
+RESULT2 or both. The two operands must be ―type compatible‖.
+
+16
+
+Relational Algebra Operations From Set Theory
+
+
+Type Compatibility
+ The operand relations R1(A1, A2, ..., An) and R2(B1, B2, ..., Bn)
+
+must have the same number of attributes, and the domains of
+corresponding attributes must be compatible; that is,
+dom(Ai)=dom(Bi) for i=1, 2, ..., n.
+
+ The resulting relation for R1R2,R1  R2, or R1-R2
+
+has the
+same attribute names as the first operand relation R1 (by
+convention).
+
+17
+
+Relational Algebra Operations From Set Theory
+
+
+UNION Example
+
+STUDENT  INSTRUCTOR
+
+18
+
+Relational Algebra Operations From Set Theory (cont.)
+
+
+INTERSECTION OPERATION
+The result of this operation, denoted by R  S, is a relation that includes all
+tuples that are in both R and S. The two operands must be "type compatible"
+Example: The result of the intersection operation (figure below) includes only
+those who are both students and instructors.
+
+STUDENT  INSTRUCTOR
+
+19
+
+Relational Algebra Operations From Set Theory (cont.)
+
+
+Set Difference (or MINUS) Operation
+The result of this operation, denoted by R - S, is a relation that includes all
+tuples that are in R but not in S. The two operands must be "type compatible‖.
+Example: The figure shows the names of students who are not instructors, and
+the names of instructors who are not students.
+STUDENT-INSTRUCTOR
+
+INSTRUCTOR-STUDENT
+
+20
+
+Relational Algebra Operations From Set Theory (cont.)
+
+
+Notice that both union and intersection are commutative operations;
+that is
+R  S = S  R, and R  S = S  R
+
+
+
+Both union and intersection can be treated as n-ary operations
+applicable to any number of relations as both are associative
+operations; that is
+R  (S  T) = (R  S)  T, and (R  S)  T = R  (S  T)
+
+
+
+The minus operation is not commutative; that is, in general
+R-S≠S–R
+
+21
+
+Relational Algebra Operations From Set Theory (cont.)
+
+
+CARTESIAN (or cross product) Operation
+
+
+This operation is used to combine tuples from two relations in a
+combinatorial fashion.
+
+
+
+In general, the result of R(A1, A2, . . ., An) x S(B1, B2, . . ., Bm) is a relation Q with
+degree n + m attributes Q(A1, A2, . . ., An, B1, B2, . . ., Bm), in that order.
+
+
+
+The resulting relation Q has one tuple for each combination of tuples—one
+from R and one from S.
+
+
+
+Hence, if R has nR tuples (denoted as |R| = nR ), and S has nS tuples, then
+| R x S | will have nR * nS tuples.
+
+
+
+The two operands do NOT have to be "type compatible”
+
+22
+
+Cartesian Product - Example
+Students
+stud# name
+100
+Fred
+200
+Dave
+300
+Bob
+
+Courses
+course
+PH
+CM
+CM
+
+Students X Courses =
+stud# Students.name
+100
+Fred
+100
+Fred
+200
+Dave
+200
+Dave
+300
+Bob
+300
+Bob
+
+course
+PH
+PH
+CM
+CM
+CM
+CM
+
+course#
+PH
+CM
+
+name
+Pharmacy
+Computing
+
+course#
+PH
+CM
+PH
+CM
+PH
+CM
+
+Courses.name
+Pharmacy
+Computing
+Pharmacy
+Computing
+Pharmacy
+Computing
+
+Binary Relational Operations
+JOIN Operation
+ The sequence of Cartesian product followed by select is used
+quite commonly to identify and select related tuples from two
+relations, a special operation, called JOIN.
+ It is denoted by a
+ This operation is very important for any relational database with
+more than a single relation, because it allows us to process
+relationships among relations.
+ The general form of a join operation on two relations R(A1, A2, . .
+., An) and S(B1, B2, . . ., Bm) is:
+R <join condition> S
+where R and S can be any relations that result from general relational
+algebra expressions.
+
+
+24
+
+Binary Relational Operations (cont.)
+Example: Suppose that we want to retrieve the name of the
+manager of each department. To get the manager‘s name, we need to
+combine each DEPARTMENT tuple with the EMPLOYEE tuple
+whose SSN value matches the MGRSSN value in the department
+tuple. We do this by using the join
+operation.
+
+DEPT_MGR  DEPARTMENT
+
+MGRSSN=SSN
+
+EMPLOYEE
+
+25
+
+Binary Relational Operations (cont.)
+
+
+EQUIJOIN Operation
+The most common use of join involves join conditions with equality comparisons
+only.
+Such a join, where the only comparison operator used is =, is called an EQUIJOIN.
+In the result of an EQUIJOIN we always have one or more pairs of attributes
+(whose names need not be identical) that have identical values in every tuple.
+The JOIN seen in the previous example was EQUIJOIN.
+
+
+
+NATURAL JOIN Operation
+Because one of each pair of attributes with identical values is superfluous, a new
+operation called natural join—denoted by *—was created to get rid of the second
+(superfluous) attribute in an EQUIJOIN condition.
+The standard definition of natural join requires that the two join attributes, or each
+pair of corresponding join attributes, have the same name in both relations.
+If this is not the case, a renaming operation is applied first.
+26
+
+Equijoin - Example
+Students
+stud# name
+100 Fred
+200 Dave
+300 Bob
+Students ⋈
+
+Courses
+course#
+PH
+CM
+
+course
+PH
+CM
+CM
+
+course = course#
+
+name
+Pharmacy
+Computing
+
+Courses
+
+stud#
+
+Students.name
+
+course course#
+
+Courses.name
+
+100
+200
+300
+
+Fred
+Dave
+Bob
+
+PH
+CM
+CM
+
+Pharmacy
+Computing
+Computing
+
+PH
+CM
+CM
+
+Natural Join - Example
+Students
+stud# name
+100 Fred
+200 Dave
+300
+Bob
+
+Courses
+course#
+PH
+CM
+
+course
+PH
+CM
+CM
+
+name
+Pharmacy
+Computing
+
+R1= Students ⋈ <course = course#> Courses
+R2=  < stud#, Students.name, course, Courses.name > R1
+stud#
+
+Students.name
+
+course
+
+Courses.name
+
+100
+200
+300
+
+Fred
+Dave
+Bob
+
+PH
+CM
+CM
+
+Pharmacy
+Computing
+Computing
+
+Complete Set of Relational Operations
+
+
+The set of operations including select , project  , union
+, set difference - , and Cartesian product X is called a
+complete set because any other relational algebra
+expression can be expressed by a combination of these five
+operations.
+
+
+
+For example:
+R  S = (R  S ) – ((R  S)  (S  R))
+R
+
+<join condition> S
+
+=  <join condition> (R X S)
+
+29
+
+Binary Relational Operations (cont.)
+
+
+DIVISION Operation
+
+
+The division operation is applied to two relations
+R(Z)  S(X), where X subset Z.
+Let Y = Z - X (and hence Z = X  Y); that is, let Y be the set of
+attributes of R that are not attributes of S.
+
+
+
+The result of DIVISION is a relation T(Y) that includes a tuple t if
+tuples tR appear in R with tR [Y] = t, and with
+tR [X] = ts for every tuple ts in S.
+
+
+
+For a tuple t to appear in the result T of the DIVISION, the
+values in t must appear in R in combination with every tuple in
+S.
+30
+
+Binary Relational Operations (cont.)
+DIVISION Operation
+
+31
+
+Additional Relational Operations
+
+
+Aggregate Functions and Grouping
+ A type of request that cannot be expressed in the basic
+
+relational algebra is to specify mathematical aggregate
+functions on collections of values from the database.
+ Examples of such functions include retrieving the average or
+
+total salary of all employees or the total number of employee
+tuples. These functions are used in simple statistical queries
+that summarize information from the database tuples.
+ Common functions applied to collections of numeric values
+
+include SUM, AVERAGE, MAXIMUM, and MINIMUM. The
+COUNT function is used for counting tuples or values.
+32
+
+Additional Relational Operations (cont.)
+Use of the Functional operator ℱ
+ℱMAX Salary (Employee) retrieves the maximum salary value
+from the Employee relation
+
+ℱMIN Salary (Employee) retrieves the minimum Salary value
+from the Employee relation
+ℱSUM Salary (Employee) retrieves the sum of the Salary from
+the Employee relation
+
+ℱCOUNT SSN, AVERAGE Salary (Employee) groups employees by
+DNO (department number) and computes the count of
+employees and average salary per department.
+[ Note: count just counts the number of rows, without
+33
+removing duplicates]
+DNO
+
+Additional Relational Operations (cont.)
+
+34
+
+Additional Relational Operations (cont.)
+
+
+The OUTER JOIN Operation
+
+
+In NATURAL JOIN tuples without a matching (or related) tuple are eliminated from
+the join result. Tuples with null in the join attributes are also eliminated. This
+amounts to loss of information.
+
+
+
+A set of operations, called outer joins, can be used when we want to keep all the
+tuples in R, or all those in S, or all those in both relations in the result of the join,
+regardless of whether or not they have matching tuples in the other relation.
+
+
+
+The left outer join operation keeps every tuple in the first or left relation R in R
+S; if no matching tuple is found in S, then the attributes of S in the join result are
+filled or “padded” with null values.
+
+
+
+A similar operation, right outer join, keeps every tuple in the second or right
+relation S in the result of R
+S.
+
+
+
+A third operation, full outer join, denoted by
+keeps all tuples in both the
+left and the right relations when no matching tuples are found, padding them
+with null values as needed.
+
+35
+
+Outer Joins
+
+
+Inner join + rows of one table which do not satisfy
+the <condition>.
+
+
+
+Left Outer Join: R
+
+<R.primary_key = S.foreign_key>
+
+S
+
+All rows from R are retained and unmatched rows of S are
+padded with NULL
+
+
+Right Outer Join: R
+
+<R.primary_key = S.foreign_key>
+
+S
+
+All rows from S are retained and unmatched rows of R are
+padded with NULL
+
+Left Outer Join - Example
+Students
+stud# name
+100 Fred
+200 Dave
+400 Peter
+Students
+
+Courses
+course#
+PH
+CM
+CH
+
+course
+PH
+CM
+EN
+<course = course#>
+
+name
+Pharmacy
+Computing
+Chemistry
+
+Courses
+
+stud#
+
+Students.name
+
+course
+
+course#
+
+Courses.name
+
+100
+200
+
+Fred
+Dave
+Peter
+
+PH
+CM
+EN
+
+PH
+CM
+NULL
+
+Pharmacy
+Computing
+NULL
+
+400
+
+Right Outer Join - Example
+Students
+stud# name
+100 Fred
+200 Dave
+400 Peter
+Students
+stud#
+
+100
+200
+NULL
+
+Courses
+course#
+PH
+CM
+CH
+
+course
+PH
+CM
+EN
+<course = course#>
+
+Students.name
+
+Courses
+
+course course#
+
+Fred
+PH
+Dave
+CM
+NULL NULL CH
+
+name
+Pharmacy
+Computing
+Chemistry
+
+PH
+CM
+
+Courses.name
+
+Pharmacy
+Computing
+Chemistry
+
+Additional Relational Operations (cont.)
+
+
+OUTER UNION Operations
+
+
+The outer union operation was developed to take the union of tuples from two
+relations if the relations are not union compatible.
+
+
+
+This operation will take the union of tuples in two relations R(X, Y) and S(X, Z)
+that are partially compatible, meaning that only some of their attributes, say X,
+are union compatible.
+
+
+
+The attributes that are union compatible are represented only once in the result,
+and those attributes that are not union compatible from either relation are also
+kept in the result relation T(X, Y, Z).
+
+
+
+Example: An outer union can be applied to two relations whose schemas are
+STUDENT(Name, SSN, Department, Advisor) and INSTRUCTOR(Name, SSN,
+Department, Rank). Tuples from the two relations are matched based on having
+the same combination of values of the shared attributes—Name, SSN,
+Department. If a student is also an instructor, both Advisor and Rank will have a
+value; otherwise, one of these two attributes will be null.
+The result relation STUDENT_OR_INSTRUCTOR will have the following attributes:
+STUDENT_OR_INSTRUCTOR (Name, SSN, Department, Advisor, Rank)
+39
+
+Relational Calculus
+
+
+A relational calculus expression creates a new relation, which is
+specified in terms of variables that range over rows of the stored
+database relations (in tuple calculus) or over columns of the
+stored relations (in domain calculus).
+
+
+
+In a calculus expression, there is no order of operations to specify
+how to retrieve the query result—a calculus expression specifies
+only what information the result should contain.
+This is the main distinguishing feature between relational algebra
+and relational calculus.
+
+
+
+
+
+Relational calculus is considered to be a nonprocedural language.
+This differs from relational algebra, where we must write a
+sequence of operations to specify a retrieval request; hence
+relational algebra can be considered as a procedural way of
+stating a query.
+40
+
+Tuple Relational Calculus
+
+
+The tuple relational calculus is based on specifying a number of tuple variables. Each
+tuple variable usually ranges over a particular database relation, meaning that the variable
+may take as its value any individual tuple from that relation.
+
+
+
+A simple tuple relational calculus query is of the form
+{t | COND(t)}
+where t is a tuple variable and COND (t) is a conditional expression involving t. The result
+of such a query is the set of all tuples t that satisfy COND (t).
+Example: To find the first and last names of all employees whose salary is above $50,000,
+we can write the following tuple calculus expression:
+{t.FNAME, t.LNAME | EMPLOYEE(t) AND t.SALARY>50000}
+The condition EMPLOYEE(t) specifies that the range relation of tuple variable t is
+
+
+
+EMPLOYEE. The first and last name (PROJECTION FNAME, LNAME) of each
+EMPLOYEE tuple t that satisfies the condition t.SALARY>50000 (SELECTION
+
+
+
+SALARY >50000
+
+) will be retrieved.
+41
+
+The Existential and Universal Quantifiers
+
+
+
+
+
+
+Two special symbols called quantifiers can appear in formulas; these are the
+universal quantifier () and the existential quantifier ().
+
+Informally, a tuple variable t is bound if it is quantified, meaning that it
+
+appears in an ( t) or ( t) clause; otherwise, it is free.
+
+If F is a formula, then so is ( t)(F), where t is a tuple variable. The formula
+
+( t)(F) is true if the formula F evaluates to true for some (at least one) tuple
+assigned to free occurrences of t in F; otherwise ( t)(F) is false.
+
+
+
+If F is a formula, then so is ( t)(F), where t is a tuple variable. The formula
+
+( t)(F) is true if the formula F evaluates to true for every tuple (in the
+
+universe) assigned to free occurrences of t in F; otherwise ( t)(F) is false.
+It is called the universal or ―for all‖ quantifier because every tuple in ―the
+universe of‖ tuples must make F true to make the quantified formula true. 42
+
+Example Query Using Existential Quantifier
+
+
+Retrieve the name and address of all employees who work for the ‗Research‘
+department.
+Query :
+{t.FNAME, t.LNAME, t.ADDRESS | EMPLOYEE(t) and ( d)
+(DEPARTMENT(d) and d.DNAME=‘Research’ and d.DNUMBER=t.DNO) }
+
+
+
+The only free tuple variables in a relational calculus expression should be those
+that appear to the left of the bar ( | ). In above query, t is the only free variable;
+it is then bound successively to each tuple. If a tuple satisfies the conditions
+specified in the query, the attributes FNAME, LNAME, and ADDRESS are
+retrieved for each such tuple.
+
+
+
+The conditions EMPLOYEE (t) and DEPARTMENT(d) specify the range
+relations for t and d. The condition d.DNAME = ‗Research‘ is a selection
+condition and corresponds to a SELECT operation in the relational algebra,
+whereas the condition d.DNUMBER = t.DNO is a JOIN condition.
+43
+
+Example Query Using Quantifiers
+
+
+
+student (rollNo, name, degree, year, sex, deptNo, advisor)
+department (deptId, name, hod, phone)
+enrollment (rollNo, courseId, sem, year, grade)
+
+
+
+Determine the departments that do not have any girl students
+
+
+
+Get the names of students who have scored ‘S’ in all subjects they have
+enrolled
+
+
+
+
+
+44
+
+Languages Based on Tuple Relational Calculus
+
+
+The language SQL is based on tuple calculus. It uses the basic
+SELECT <list of attributes>
+FROM <list of relations>
+WHERE <conditions>
+block structure to express the queries in tuple calculus where the SELECT clause
+mentions the attributes being projected, the FROM clause mentions the relations
+needed in the query, and the WHERE clause mentions the selection as well as the join
+conditions.
+SQL syntax is expanded further to accommodate other operations. (See Chapter 8).
+
+
+
+Another language which is based on tuple calculus is QUEL which actually uses
+the range variables as in tuple calculus.
+Its syntax includes:
+RANGE OF <variable name> IS <relation name>
+Then it uses
+RETRIEVE <list of attributes from range variables>
+WHERE <conditions>
+This language was proposed in the relational DBMS INGRES.
+45
+
+The Domain Relational Calculus
+
+
+Another variation of relational calculus called the domain relational calculus, or
+simply, domain calculus is equivalent to tuple calculus and to relational algebra.
+
+
+
+The language called QBE (Query-By-Example) that is related to domain calculus
+was developed almost concurrently to SQL at IBM Research, Yorktown Heights,
+New York. Domain calculus was thought of as a way to explain what QBE does.
+
+
+
+Domain calculus differs from tuple calculus in the type of variables used in
+formulas: rather than having variables range over tuples, the variables range over
+single values from domains of attributes. To form a relation of degree n for a
+query result, we must have n of these domain variables—one for each attribute.
+
+
+
+An expression of the domain calculus is of the form
+{x1, x2, . . ., xn | COND(x1, x2, . . ., xn, xn+1, xn+2, . . ., xn+m)}
+where x1, x2, . . ., xn, xn+1, xn+2, . . ., xn+m are domain variables that range over
+domains (of attributes) and COND is a condition or formula of the domain
+relational calculus.
+46
+
+Example Query Using Domain Calculus
+
+
+Retrieve the birthdate and address of the employee whose name is ‗John B.
+Smith‘.
+Query :
+{uv | ( q) ( r) ( s) ( t) ( w) ( x) ( y) ( z)
+(EMPLOYEE(qrstuvwxyz) and q=’John’ and r=’B’ and s=’Smith’)}
+
+
+
+Ten variables for the employee relation are needed, one to range over the
+domain of each attribute in order. Of the ten variables q, r, s, . . ., z, only u and
+v are free.
+
+
+
+Specify the requested attributes, BDATE and ADDRESS, by the free domain
+variables u for BDATE and v for ADDRESS.
+
+
+
+Specify the condition for selecting a tuple following the bar ( | )—namely, that
+the sequence of values assigned to the variables qrstuvwxyz be a tuple of the
+employee relation and that the values for q (FNAME), r (MINIT), and s
+47
+(LNAME) be ‗John‘, ‗B‘, and ‗Smith‘, respectively.
+
+In-class Exercise
+
+
+
+
+
+
+
+
+Consider the following relations:
+Student(ssn, name, address, major)
+Course(code, title)
+Registered(ssn,code)
+List the codes of courses in which at least one student is
+registered (registered courses)
+List the codes of courses for which no student is registered
+SSNs of students who are registered for ‘Database Systems’ or
+‘Analysis of Algorithms’.
+SSNs of students who are registered for both ‘Database Systems’
+and ‘Analysis of Algorithms’.
+List of courses in which all students are registered.
+48
+
+References
+• Chapter
+
+6 : Fundamentals of Database Systems
+(5th Edition) By Remez Elmasri & Shamkant B.
+Navathe
+
+49
+
+Questions ???
+
+50
+
+

@@ -1,0 +1,498 @@
+Fundamentals of databases &
+Database design
+IT 1400- Level 1 Semester 2
+Lecture 6
+
+Thilina Ranbaduge
+tranbaduge@uom.lk
+
+What we discuss Today ……..
+Relational Model Concepts
+ Relational Model Constraints and Relational
+Database Schemas
+ Update Operations and Dealing with
+Constraint Violations
+
+
+2
+
+Sets
+A set is any well-defined list, collection, or class
+of objects.
+• Elements or members of the set.
+• A = {1, 3, 7, 10}
+• B= {x | x is even}
+•
+
+3
+
+Subsets
+If every element in a set A is also a
+member of a set B, then A is called a
+subset of B.
+ AB (Proper)
+
+
+4
+
+Union
+The union of sets A and B is the set of all
+elements which belong to A or to B or to
+both.
+ AB
+ S={a,b,c,d} T={f,b,d,g} ST=?
+
+
+5
+
+Relational Model Concepts
+•
+
+The relational Model of Data is based on the
+concept of a Relation.
+
+•
+
+A Relation is a mathematical concept based on the
+ideas of sets.
+
+•
+
+The strength of the relational approach to data
+management comes from the formal foundation
+provided by the theory of relations.
+
+•
+
+We review the essentials of the relational
+approach today.
+6
+
+Relational Model Concepts
+
+
+The model was first proposed by Dr. E.F. Codd of IBM in
+1970 in the following paper:
+"A Relational Model for Large Shared Data Banks,"
+Communications of the ACM, June 1970.
+
+The above paper caused a major revolution in the
+field of Database management and earned Ted
+Codd the coveted ACM Turing Award.
+
+7
+
+INFORMAL DEFINITIONS
+
+
+RELATION: A table of values
+ A relation may be thought of as a set of rows.
+ A relation may alternately be though of as a set of columns.
+
+ Each row represents a fact that corresponds to a real-world
+
+entity or relationship.
+ Each row has a value of an item or set of items that uniquely
+
+identifies that row in the table.
+ Sometimes row-ids or sequential numbers are assigned to
+identify the rows in the table.
+ Each column typically is called by its column name or column
+
+header or attribute name.
+
+8
+
+FORMAL DEFINITIONS
+• A Relation
+
+may be defined in multiple ways.
+• The Schema of a Relation: R (A1, A2, .....An)
+Relation schema R is defined over attributes A1, A2, .....An
+For Example CUSTOMER (Cust-id, Cust-name, Address, Phone#)
+Here, CUSTOMER is a relation defined over the four
+attributes Cust-id, Cust-name, Address, Phone#, each of
+which has a domain or a set of valid values. For example,
+the domain of Cust-id is 6 digit numbers.
+9
+
+FORMAL DEFINITIONS
+
+
+
+
+
+
+A tuple is an ordered set of values
+Each value is derived from an appropriate domain.
+Each row in the CUSTOMER table may be referred to as a
+tuple in the table and would consist of four values.
+<632895, "John Smith", "101 Main St. Atlanta, GA 30332", "(404) 894-2000">
+
+is a tuple belonging to the CUSTOMER relation.
+
+
+
+A relation may be regarded as a set of tuples (rows).
+Columns in a table are also called attributes of the
+relation.
+10
+
+FORMAL DEFINITIONS
+
+
+A domain has a logical definition: e.g.,
+“USA_phone_numbers” are the set of 10 digit phone
+numbers valid in the U.S.
+
+
+
+A domain may have a data-type or a format defined for
+it. The USA_phone_numbers may have a format: (ddd)ddd-dddd where each d is a decimal digit. E.g., Dates
+have various formats such as monthname, date, year or
+yyyy-mm-dd, or dd mm,yyyy etc.
+
+
+
+An attribute designates the role played by the domain.
+E.g., the domain Date may be used to define attributes
+“Invoice-date” and “Payment-date”.
+11
+
+FORMAL DEFINITIONS
+•
+
+•
+
+•
+
+•
+
+•
+•
+•
+
+The relation is formed over the cartesian product of the sets; each
+set has values from a domain; that domain is used in a specific role
+which is conveyed by the attribute name.
+For example, attribute Cust-name is defined over the domain of
+strings of 25 characters. The role these strings play in the
+CUSTOMER relation is that of the name of customers.
+Formally,
+Given R(A1, A2, .........., An)
+r(R)  dom (A1) X dom (A2) X ....X dom(An)
+R: schema of the relation
+r of R: a specific "value" or population of R.
+R is also called the intension of a relation
+r is also called the extension of a relation
+
+12
+
+FORMAL DEFINITIONS
+
+
+Let S1 = {0,1}
+Let S2 = {a,b,c}
+
+
+
+Let R  S1 X S2
+
+
+
+Then for example: r(R) = {<0,a> , <0,b> , <1,c> }
+is one possible “state” or “population” or “extension” r
+of the relation R, defined over domains S1 and S2. It has
+three tuples.
+
+
+
+13
+
+DEFINITION SUMMARY
+Informal Terms
+
+Formal Terms
+
+Table
+Column
+Row
+Values in a column
+Table Definition
+Populated Table
+
+Relation
+Attribute/Domain
+Tuple
+Domain
+Schema of a Relation
+Extension
+14
+
+Example
+
+15
+
+CHARACTERISTICS OF RELATIONS
+
+
+Ordering of tuples in a relation r(R): The tuples are not
+considered to be ordered, even though they appear to be in
+the tabular form.
+
+
+
+Ordering of attributes in a relation schema R (and of values
+within each tuple): We will consider the attributes in R(A1, A2,
+..., An) and the values in t=<v1, v2, ..., vn> to be ordered .
+(However, a more general alternative definition of relation
+does not require this ordering).
+
+
+
+Values in a tuple: All values are considered atomic (indivisible).
+A special null value is used to represent values that are
+unknown or inapplicable to certain tuples.
+16
+
+Two identical tuples when the order of
+attributes and values is not part of relation
+definition.
+
+17
+
+CHARACTERISTICS OF RELATIONS
+
+-
+
+Notation:
+We refer to component values of a tuple t by
+t[Ai] = vi (the value of attribute Ai for tuple t).
+Similarly, t[Au, Av, ..., Aw] refers to the subtuple
+of t containing the values of attributes Au, Av, ...,
+Aw, respectively.
+
+CHARACTERISTICS OF RELATIONS
+
+t[Name] = Benjamin Bayer
+
+19
+
+Relational Integrity Constraints
+
+
+Constraints are conditions that must
+hold on all valid relation instances.
+There are three main types of
+constraints:
+Key constraints
+2. Entity integrity constraints
+3. Referential integrity constraints
+1.
+
+20
+
+Key Constraints
+•
+
+Superkey of R: A set of attributes SK of R such that no two tuples in
+any valid relation instance r(R) will have the same value for SK.
+That is, for any distinct tuples t1 and t2 in r(R), t1[SK]  t2[SK].
+
+•
+
+Key of R: A "minimal" superkey; that is, a superkey K such that
+removal of any attribute from K results in a set of attributes that is
+not a superkey.
+Example: The CAR relation schema:
+CAR(State, Reg#, SerialNo, Make, Model, Year)
+has two keys Key1 = {State, Reg#}, Key2 = {SerialNo}, which are also superkeys.
+{SerialNo, Make} is a superkey but not a key.
+
+•
+
+If a relation has several candidate keys, one is chosen arbitrarily to
+be the primary key. The primary key attributes are underlined. 21
+
+Key Constraints
+
+22
+
+Entity Integrity
+
+
+
+
+
+
+Relational Database Schema: A set S of relation
+schemas that belong to the same database. S is the
+name of the database.
+S = {R1, R2, ..., Rn}
+Entity Integrity: The primary key attributes PK of each
+relation schema R in S cannot have null values in any
+tuple of r(R). This is because primary key values are
+used to identify the individual tuples.
+t[PK]  null for any tuple t in r(R)
+Note: Other attributes of R may be similarly
+constrained to disallow null values, even though they
+are not members of the primary key.
+23
+
+Referential Integrity
+
+
+
+
+
+
+
+A constraint involving two relations (the previous
+constraints involve a single relation).
+Used to specify a relationship among tuples in two
+relations: the referencing relation and the referenced
+relation.
+Tuples in the referencing relation R1 have attributes
+FK (called foreign key attributes) that reference the
+primary key attributes PK of the referenced relation
+R2. A tuple t1 in R1 is said to reference a tuple t2 in R2
+if t1[FK] = t2[PK].
+A referential integrity constraint can be displayed in a
+relational database schema as a directed arc from
+24
+R1.FK to R2.
+
+DNO is a foreign key
+
+t1
+
+t2
+t1[FK] = t2[PK].
+
+25
+
+Referential Integrity Constraint
+Statement of the constraint
+The value in the foreign key column (or columns) FK of the the
+referencing relation R1 can be either:
+(1) a value of an existing primary key value of the corresponding
+primary key PK in the referenced relation R2,, or..
+(2) a null.
+In case (2), the FK in R1 should not be a part of its own primary key.
+26
+
+Other Types of Constraints
+Semantic Integrity Constraints:
+- based on application semantics and cannot be expressed
+by the model per software engineer
+-
+
+E.g., “the max. no. of hours per employee for all projects he
+or she works on is 56 hrs per week”
+
+-
+
+A constraint specification language may have to be used to
+express these
+
+27
+
+Converting ERD to Relational
+Schema
+
+
+
+Entity  Table
+Relation
+
+ 1:1  put a foreign key in either side of entity
+ 1:N  put a foreign key in one side
+ N:N  create a table for it.
+
+ Ternary and over  in general make a table
+
+
+
+Attribute
+ Multi-valued attribute  Table
+
+ Make composite attribute flat
+
+28
+
+Chapter 5-29
+
+30
+
+31
+
+32
+
+Update Operations on Relations
+
+
+
+
+
+
+
+
+INSERT a tuple.
+DELETE a tuple.
+MODIFY a tuple.
+
+Integrity constraints should not be violated by the
+update operations.
+Several update operations may have to be
+grouped together.
+Updates may propagate to cause other updates
+automatically. This may be necessary to maintain
+integrity constraints.
+
+33
+
+Update Operations on Relations
+
+
+In case of integrity violation, several actions can be
+taken:
+ Cancel the operation that causes the violation
+
+(REJECT option)
+ Perform the operation but inform the user of the
+violation
+ Trigger additional updates so the violation is
+corrected (CASCADE option, SET NULL option)
+ Execute a user-specified error-correction routine
+34
+
+35
+
+In-Class Exercise
+Consider the following relations for a database that keeps track of student
+enrollment in courses and the books adopted for each course:
+
+STUDENT(SSN, Name, Major, Bdate)
+COURSE(Course#, Cname, Dept)
+Quarter(Quarter)
+ENROLL(SSN, Course#, Quarter, Grade)
+BOOK_ADOPTION(Course#, Quarter, Book_ISBN)
+TEXT(Book_ISBN, Book_Title, Publisher, Author)
+Draw a relational schema diagram specifying the foreign keys for this
+schema.
+
+36
+
+References
+Chapter 6 : Fundamentals of Database Systems
+(4th Edition) By Remez Elmasri & Shamkant B. Navathe
+
+•
+
+37
+
+Questions ???
+
+38
+
+

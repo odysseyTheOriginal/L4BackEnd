@@ -1,0 +1,821 @@
+Fundamentals of databases &
+Database design
+IT 1400- Level 1 Semester 2
+Lecture 6
+
+Thilina Ranbaduge
+tranbaduge@uom.lk
+
+Review - Concepts
+Relational Model is made up of tables
+
+
+
+
+
+
+A row of table
+A column of table
+A table
+Cardinality
+Degree
+
+= a relational instance/tuple
+= an attribute
+= a schema/relation
+= number of rows
+= number of columns
+
+Review - Example
+Attribute
+
+SID
+
+Name
+
+Major
+
+GPA
+
+1234
+
+John
+
+CS
+
+2.8
+
+5678
+
+Mary
+
+EE
+
+3.6
+
+Cardinality =
+
+tuple/relational
+instance
+
+2
+4 Degree
+
+A Schema / Relation
+
+From ER Model to Relational Model
+So… how do we convert an ER diagram into a table??
+Simple!!
+Basic Ideas:
+ Build a table for each entity set
+ Build a table for each relationship set if necessary (more on
+this later)
+ Make a column in the table for each attribute in the entity set
+ Indivisibility Rule and Ordering Rule
+ Primary Key
+
+Example – Strong Entity Set
+SID
+
+Name
+
+SSN
+Advisor
+
+Student
+
+Major
+
+Name
+
+Professor
+
+Dept
+
+GPA
+
+SID
+
+Name Major
+
+GPA
+
+SSN
+
+Name
+
+Dept
+
+1234
+
+John
+
+CS
+
+2.8
+
+9999
+
+Smith
+
+Math
+
+5678
+
+Mary
+
+EE
+
+3.6
+
+8888
+
+Lee
+
+CS
+
+Representation of Weak Entity Set
+Weak Entity Set Cannot exists alone
+ To build a table/schema for weak entity set
+
+
+ Construct a table with one column for each attribute in the
+
+weak entity set
+ Remember to include discriminator
+ Augment one extra column on the right side of the table,
+put in there the primary key of the Strong Entity Set (the
+entity set that the weak entity set is depending on)
+ Primary Key of the weak entity set = Discriminator +
+foreign key
+
+Example – Weak Entity Set
+SID
+
+Student
+
+Major
+
+Age
+
+Name
+
+owns
+
+Name
+
+Children
+
+GPA
+
+Age
+
+Name
+
+Parent_SID
+
+10
+
+Bart
+
+1234
+
+8
+
+Lisa
+
+5678
+
+* Primary key of Children is Parent_SID + Name
+
+Representation of Relationship Set
+--This is a little more complicated-
+
+Unary/Binary Relationship set
+
+
+
+
+
+N-ary (multiple) Relationship set
+
+
+
+
+Depends on the cardinality and participation of the relationship
+Two possible approaches
+Primary Key Issue
+
+Identifying Relationship
+
+
+No relational model representation necessary
+
+Representing Relationship Set
+Unary/Binary Relationship
+
+
+
+
+For one-to-one relationship w/out total participation
+ Build a table with two columns, one column for each
+participating entity set’s primary key. Add successive
+columns, one for each descriptive attributes of the
+relationship set (if any).
+For one-to-one relationship with one entity set having total
+participation
+ Augment one extra column on the right side of the table of
+the entity set with total participation, put in there the
+primary key of the entity set without complete
+participation as per to the relationship.
+
+Example – One-to-One Relationship Set
+Degree
+SID
+
+Name
+
+Student
+
+Major
+
+ID Code
+
+study
+
+Major
+
+GPA
+
+SID
+
+Maj_ID Co
+
+S_Degree
+
+9999
+
+07
+
+1234
+
+8888
+
+05
+
+5678
+
+* Primary key can be either SID or Maj_ID_Co
+
+Example – One-to-One Relationship Set
+Condition
+SID
+
+Name
+
+1:1
+Relationship
+
+Student
+
+Major
+
+S/N #
+
+Have
+
+Laptop
+
+GPA
+
+Brand
+
+SID
+
+Name
+
+Major
+
+GPA
+
+LP_S/N
+
+Hav_Cond
+
+9999
+
+Bart
+
+Economy
+
+-4.0
+
+123-456
+
+Own
+
+8888
+
+Lisa
+
+Physics
+
+4.0
+
+567-890
+
+Loan
+
+* Primary key can be either SID or LP_S/N
+
+Representing Relationship Set
+Unary/Binary Relationship
+
+
+
+
+For one-to-many relationship w/out total
+participation
+ Same thing as one-to-one
+For one-to-many/many-to-one relationship with one
+entity set having total participation on “many” side
+ Augment one extra column on the right side of
+the table of the entity set on the “many” side, put
+in there the primary key of the entity set on the
+“one” side as per to the relationship.
+
+Example – Many-to-One Relationship Set
+Semester
+SID
+
+Name
+
+N:1
+Relationship
+Advisor
+
+Student
+
+Major
+
+SSN
+
+Professor
+
+GPA
+
+Dept
+
+Name
+
+SID
+
+Name
+
+Major
+
+GPA
+
+Pro_SSN
+
+Ad_Sem
+
+9999
+
+Bart
+
+Economy
+
+-4.0
+
+123-456
+
+Fall 2006
+
+8888
+
+Lisa
+
+Physics
+
+4.0
+
+567-890
+
+Fall 2005
+
+* Primary key of this table is SID
+
+Representing Relationship Set
+Unary/Binary Relationship
+
+
+For many-to-many relationship
+ Same thing as one-to-one relationship without
+total participation.
+ Primary key of this new schema is the union of the
+foreign keys of both entity sets.
+ No augmentation approach possible…
+
+Representing Relationship Set
+N-ary Relationship
+
+
+Intuitively Simple
+ Build a new table with as many columns as there are
+
+attributes for the union of the primary keys of all
+participating entity sets.
+ Augment additional columns for descriptive attributes of
+the relationship set (if necessary)
+ The primary key of this table is the union of all primary
+keys of entity sets that are on “many” side
+ That is it, we are done.
+
+P-Key1
+
+Example – N-ary Relationship Set
+D-Attribute
+
+A-Key
+
+E-Set 1
+P-Key2
+
+A relationship
+
+Another Set
+
+E-Set 2
+P-Key3
+E-Set 3
+
+P-Key1
+
+P-Key2
+
+P-Key3
+
+A-Key
+
+D-Attribute
+
+9999
+
+8888
+
+7777
+
+6666
+
+Yes
+
+1234
+
+5678
+
+9012
+
+3456
+
+No
+
+* Primary key of this table is P-Key1 + P-Key2 + P-Key3
+
+Representing Relationship Set
+Identifying Relationship
+
+
+This is what you have to know
+ You DON’T have to build a table/schema for the
+
+identifying relationship set once you have built a
+table/schema for the corresponding weak entity
+set
+ Reason:
+A special case of one-to-many with total participation
+ Reduce Redundancy
+
+
+Representing Composite Attribute
+
+
+
+
+Relational Model Indivisibility Rule Applies
+One column for each component attribute
+NO column for the composite attribute itself
+SSN
+
+Name
+
+Professor
+Address
+
+Street
+
+City
+
+SSN
+
+Name
+
+Street
+
+City
+
+9999
+
+Dr. Smith
+
+50 1st St.
+
+Fake City
+
+8888
+
+Dr. Lee
+
+1 B St.
+
+San Jose
+
+Representing Multivalue Attribute
+
+
+For each multivalue attribute in an entity
+set/relationship set
+ Build a new relation schema with two columns
+ One column for the primary keys of the entity
+
+set/relationship set that has the multivalue attribute
+ Another column for the multivalue attributes. Each cell of
+this column holds only one value. So each value is
+represented as an unique tuple
+ Primary key for this schema is the union of all attributes
+
+Example – Multivalue attribute
+SID
+
+Name
+Children
+
+Student
+
+Major
+
+The primary key for this
+table is Student_SID +
+Children, the union of all
+attributes
+
+GPA
+
+SID
+
+Name
+
+Major
+
+GPA
+
+1234
+
+John
+
+CS
+
+2.8
+
+5678
+
+Homer
+
+EE
+
+3.6
+
+Stud_SID
+
+Children
+
+1234
+
+Johnson
+
+1234
+
+Mary
+
+5678
+
+Bart
+
+5678
+
+Lisa
+
+5678
+
+Maggie
+
+Representing Class Hierarchy
+
+
+Two general approaches depending on disjointness
+and completeness
+ For non-disjoint and/or non-complete class hierarchy:
+
+create a table for each super class entity set according
+to normal entity set translation method.
+ Create a table for each subclass entity set with a
+column for each of the attributes of that entity set plus
+one for each attributes of the primary key of the super
+class entity set
+ This primary key from super class entity set is also used
+as the primary key for this new table
+
+
+Example
+
+SSN
+
+Name
+
+Person
+SID
+
+Status
+Gender
+ISA
+Student
+
+Major
+
+GPA
+
+SSN
+
+SID
+
+Status
+
+Major
+
+GPA
+
+1234
+
+9999
+
+Full
+
+CS
+
+2.8
+
+5678
+
+8888
+
+Part
+
+EE
+
+3.6
+
+SSN
+
+Name
+
+Gender
+
+1234
+
+Homer
+
+Male
+
+5678
+
+Marge
+
+Female
+
+Representing Class Hierarchy
+
+
+Two general approaches depending on disjointness
+and completeness
+ For disjoint AND complete mapping class hierarchy:
+ DO NOT create a table for the super class entity set
+ Create a table for each subclass entity set include all
+
+attributes of that subclass entity set and attributes of the
+superclass entity set
+ Simple and Intuitive enough, need example?
+
+SSN
+
+Name
+
+No table created for
+superclass entity set
+
+Example
+SJSU people
+
+ISA
+
+SID
+
+Student
+
+Faculty
+Disjoint and
+Complete mapping
+
+Major
+
+Dept
+
+GPA
+
+SSN
+
+Name
+
+SID
+
+Major
+
+GPA
+
+SSN
+
+Name
+
+Dept
+
+1234
+
+John
+
+9999
+
+CS
+
+2.8
+
+1234
+
+Homer
+
+C.S.
+
+5678
+
+Mary
+
+8888
+
+EE
+
+3.6
+
+5678
+
+Marge
+
+Math
+
+In-class Exercise 1
+
+
+Draw the relational schema for the following
+ER diagrams
+
+In-class Exercise 2
+
+In-class Exercise 3
+
+In-class Exercise 4
+
+References
+Chapter 6 : Fundamentals of Database Systems
+(4th Edition) By Remez Elmasri & Shamkant B. Navathe
+
+
+
+ Jung
+
+T. Chang, How to translate ER Model to
+Relational Model
+
+29
+
+Questions ???
+
+30
+
+

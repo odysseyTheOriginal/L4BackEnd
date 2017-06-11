@@ -1,0 +1,521 @@
+Fundamentals of databases
+& Database design
+IT 1400- Level 1 Semister 2
+Lecture 1
+Thilina Ranbaduge
+tranbaduge@uom.lk
+1
+
+Course Outline
+Database Context
+ Database Architectures
+ Database development life Cycle
+ E-R Model & EER Model
+ Rational Model
+ Functional Dependencies & Normalization
+ Map logical design to physical design
+ Database processing formal languages
+ Structured Query Languages
+
+
+2
+
+References
+Fundamentals of Database Systems
+(4th Edition) By Remez Elmasri & Shamkant B.
+Navathe
+
+
+3
+
+What we discuss Today ……..
+Introduction
+ An Example
+ Characteristics of the Database Approach
+ Actors on the Scene
+ Workers behind the Scene
+ Advantages of Using a DBMS
+ Implications of the Database Approach
+ When Not to Use a DBMS
+
+
+4
+
+What is a Database?
+A database is a collection of related data
+ A database is designed, built, and populated
+with data for a specific purpose. It has an
+intended group of users and some
+preconceived applications in which these
+users are interested.
+
+
+5
+
+Data & Mini World
+
+
+Data: Known facts that can be recorded and
+have an implicit meaning.
+
+
+
+Mini-world: Some part of the real world about
+which data is stored in a database. For
+example, student grades and transcripts at a
+university
+6
+
+Types of Databases and Database
+Applications
+Numeric and Textual Databases
+ Multimedia Databases
+ Geographic Information Systems (GIS)
+ Data Warehouses
+ Real-time and Active Databases
+
+
+What is Database Management
+System?
+A database management system (DBMS) is a
+collection of programs that enables users to
+create and maintain a database.
+ The DBMS is hence a general-purpose
+software system that facilitates the processes
+of defining, constructing, and manipulating
+databases for various applications.
+
+
+8
+
+What is Database Management
+System?
+
+
+Database System: The DBMS software
+together with the data itself. Sometimes, the
+applications are also included
+
+9
+
+Example
+
+
+a UNIVERSITY database for maintaining
+information concerning students, courses, and
+grades in a university environment
+
+10
+
+Example of a Database
+(with a Conceptual Data Model)
+
+
+
+Mini-world for the example: Part of a
+UNIVERSITY environment.
+Some mini-world entities:
+ STUDENTs
+ COURSEs
+ SECTIONs (of COURSEs)
+
+ (academic) DEPARTMENTs
+ INSTRUCTORs
+
+Note: The above could be expressed in the ENTITYRELATIONSHIP data model.
+
+Example of a Database
+(with a Conceptual Data Model)
+
+
+Some mini-world relationships:
+ SECTIONs are of
+
+specific COURSEs
+ STUDENTs take SECTIONs
+ COURSEs have prerequisite COURSEs
+ INSTRUCTORs teach SECTIONs
+ COURSEs are offered by DEPARTMENTs
+ STUDENTs major in DEPARTMENTs
+
+Note: The above could be expressed in the ENTITYRELATIONSHIP data model.
+
+Why Not Traditional File Systems?
+Redundancy in defining and storing data
+ Wasted storage space
+ Redundant efforts to maintain common data
+up-to-date
+
+
+13
+
+Characteristics of the Database
+Approach
+Self-Describing Nature of a Database System
+ Insulation between Programs and Data, and
+Data Abstraction
+ Support of Multiple Views of the Data
+ Sharing of Data and Multiuser Transaction
+Processing
+
+
+14
+
+Self-Describing Nature of a Database
+System
+A complete definition or description of the
+database structure and constraints
+ DBMS software works equally well with any
+number of database applications
+
+
+
+
+DBMS catalog stores the description of the
+database. The description is called meta-data
+15
+
+Self-Describing Nature of a Database
+System
+
+16
+
+Insulation between Programs and
+Data, and Data Abstraction
+
+
+Program-data independence
+
+
+
+
+Program - operation independence :
+
+
+
+
+Allows changing data storage structures and operations without
+having to change the DBMS access programs
+
+The interface (or signature) of an operation includes the operation
+name and the data types of its arguments (or parameters).
+The implementation (or method) of the operation is specified
+separately and can be changed without affecting the interface.
+
+Data Abstraction
+
+
+A data model is used to hide storage details and present the users
+17
+with a conceptual view of the database
+
+Support of Multiple Views of the
+Data
+A database typically has many users, each of
+whom may require a different perspective or
+view of the database.
+ A view may be a subset of the database or it
+may contain virtual data that is derived from
+the database files but is not explicitly stored
+ A multiuser DBMS whose users have a variety
+of applications must provide facilities for
+defining multiple views
+
+
+18
+
+Sharing of Data and Multiuser Transaction
+Processing
+
+
+
+
+
+
+
+Allow multiple users to access the database at the
+same time
+Concurrency control
+Allowing a set of concurrent users to retrieve and to
+update the database.
+Concurrency control within the DBMS guarantees
+that each transaction is correctly executed or
+completely aborted.
+OLTP (Online Transaction Processing) is a major part
+of database applications.
+19
+
+Database Users
+Users may be divided into those who actually
+use and control the content (called “Actors on
+the Scene”) and those who enable the
+database to be developed and the DBMS
+software to be designed and implemented
+(called “Workers Behind the Scene”).
+
+Actors on the Scene
+
+
+Database Administrators
+ Administrating
+
+the database & the DBMS
+
+Responsibilities : Authorizing
+
+access to the database
+ Coordinating and monitoring the use of database
+ Acquiring software and hardware resources as
+needed
+ Accountable for problems such as breach of
+security or poor system response time
+21
+
+
+
+Database Designers
+ Responsible for identifying the data to be stored in
+
+the database and for choosing appropriate
+structures to represent and store this data
+
+Responsibilities : Communicate with all prospective database users, in
+
+order to understand their requirement
+ Identifying the data to be stored in the database
+ Choosing appropriate structures to represent and
+store this data
+ Develop a view of the database that meets the data
+22
+and processing requirements
+
+Categories of End-users
+
+
+
+People whose jobs require access to the database for
+querying, updating, and generating reports
+Casual
+ Access database occasionally when needed
+
+
+
+Naïve or Parametric
+ They make up a large section of the end-user population.
+
+They use previously well-defined functions in the form of
+“canned transactions” against the database.
+ Examples are bank-tellers or reservation clerks who do this
+activity for an entire shift of operations.
+
+
+Categories of End-users
+
+
+Sophisticated
+ These include business analysts, scientists, engineers, others
+
+thoroughly familiar with the system capabilities.
+ Many use tools in the form of software packages that work
+closely with the stored database.
+
+
+Stand-alone
+ Mostly maintain personal databases using ready-to-use
+
+packaged applications.
+ An example is a tax program user that creates his or her own
+internal database.
+
+ System Analysts &
+
+Application Programmers (Software Engineers)
+System analysts
+determine the requirements of end users, especially naive
+and parametric end users, and develop specifications for
+canned transactions that meet these requirements.
+Application programmers
+implement these specifications as programs; then they test,
+debug, document, and maintain these canned transactions.
+
+Such analysts and programmers (nowadays called software
+engineers) should be familiar with the full range of
+capabilities provided by the DBMS to accomplish their tasks.
+25
+
+Advantages of Using a DBMS
+
+
+
+
+
+
+
+
+
+Controlling Redundancy
+Restricting Unauthorized Access
+Providing Persistent Storage for Program Objects and
+Data Structures
+Permitting Inferencing and Actions Using Rules
+Providing Multiple User Interfaces
+Representing Complex Relationships Among Data
+Enforcing Integrity Constraints
+Providing Backup and Recovery
+26
+
+Implications of the Database Approach
+
+
+Potential for Enforcing Standards
+ This is very crucial for the success of database
+
+applications in large organizations Standards refer
+to data item names, display formats, screens,
+report structures, meta-data (description of data)
+etc
+
+
+Reduced Application Development Time
+ Incremental time to add each new application is
+
+reduced
+27
+
+Implications of the Database Approach
+
+
+Flexibility to change data-structures
+ Database structure may evolve as new
+
+requirements are defined
+
+
+Availability of Up-to-Date Information
+ Very important for on-line transaction systems
+
+such as airline, hotel, car reservations
+
+
+Economies of Scale
+ By consolidating data and applications across
+
+departments wasteful overlap of resources and
+personnel can be avoided.
+
+28
+
+Historical Development of Database
+Technology
+
+
+Early Database Applications
+ The Hierarchical and Network Models were introduced in mid
+
+1960’s and dominated during the seventies. A bulk of the
+worldwide database processing still occurs using these
+models.
+
+
+Relational Model based Systems
+ The model that was originally introduced in 1970 was heavily
+
+researched and experimented with in IBM and the
+universities. Relational DBMS Products emerged in the
+1980’s.
+
+Historical Development of Database
+Technology
+
+
+Object-oriented applications
+ OODBMSs were introduced in late 1980’s and early 1990’s to
+
+cater to the need of complex data processing in CAD and
+other applications. Their use has not taken off much.
+
+
+Data on the Web and E-commerce Applications
+ Web contains data in HTML (Hypertext markup language)
+
+with links among pages. This has given rise to a new set of
+applications and E-commerce is using new standards like XML
+(eXtended Markup Language).
+
+Extending Database Capabilities
+
+
+New functionality is being added to DBMSs in the
+following areas:
+ Scientific Applications
+ Image Storage and Management
+ Audio and Video data management
+ Data Mining
+ Spatial data management
+ Time Series and Historical Data Management
+
+The above gives rise to new research and development in incorporating new data
+types, complex data structures, new operations and storage and indexing
+schemes in database systems.
+
+When not to use a DBMS
+
+
+Main inhibitors (costs) of using a DBMS:
+ High initial investment and possible need for
+
+additional hardware.
+ Overhead for providing generality, security,
+concurrency control, recovery, and integrity
+functions.
+
+
+When a DBMS may be unnecessary:
+ If the database and applications are simple, well
+
+defined, and not expected to change.
+ If there are stringent real-time requirements that
+may not be met because of DBMS overhead.
+ If access to data by multiple users is not required.
+
+When not to use a DBMS
+
+
+When no DBMS may suffice:
+ If the database system is not able to handle the
+
+complexity of data because of modeling
+limitations
+ If the database users need special operations not
+supported by the DBMS.
+
+Summary
+Characteristics that distinguish the database
+approach from traditional file-processing
+applications
+ Main categories of database users
+ Advantages using a DBMS
+
+
+34
+
+Questions ???
+
+35
+
+In class Exercise
+Thinks on a one real world application which
+uses the databases
+ Try to define the mini world for the database
+
+
+ Entities
+ Relationships
+ Users
+
+
+
+Reading assignment: Chapter 1
+36
+
+

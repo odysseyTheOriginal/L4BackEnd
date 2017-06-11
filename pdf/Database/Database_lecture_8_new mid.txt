@@ -1,0 +1,867 @@
+Fundamentals of databases
+& Database design
+IT 1400- Level 1 Semester 2
+Lecture 8
+Thilina Ranbaduge
+tranbaduge@uom.lk
+1
+
+What we Discuss Today…..
+
+
+
+
+
+
+
+
+
+SQL Data Definition and Data Types
+Specifying Basic Constraints in SQL
+Schema Change Statements in SQL
+Basic Queries in SQL
+More Complex SQL Queries
+Insert, Delete, and Update Statements in SQL
+Additional Features of SQL
+
+2
+
+Data Definition, Constraints, and
+Schema Changes
+
+
+Used to CREATE, DROP, and ALTER the
+descriptions of the tables (relations) of a
+database
+
+3
+
+CREATE TABLE
+
+
+
+
+Specifies a new base relation by giving it a name, and
+specifying each of its attributes and their data types
+(INTEGER, FLOAT, DECIMAL(i,j), CHAR(n), VARCHAR(n))
+A constraint NOT NULL may be specified on an attribute
+CREATE TABLE DEPARTMENT
+(
+DNAME
+VARCHAR(10)
+DNUMBER INTEGER
+MGRSSN CHAR(9),
+MGRSTARTDATE CHAR(9) );
+
+NOT NULL,
+NOT NULL,
+
+4
+
+CREATE TABLE
+
+
+
+
+In SQL, can use the CREATE TABLE command for
+specifying the primary key attributes, secondary keys,
+and referential integrity constraints (foreign keys).
+Key attributes can be specified via the PRIMARY KEY and
+UNIQUE phrases
+CREATE TABLE DEPT
+( DNAME
+VARCHAR(10) NOT NULL,
+DNUMBER
+INTEGER
+NOT NULL,
+MGRSSN
+CHAR(9),
+MGRSTARTDATE
+CHAR(9),
+PRIMARY KEY (DNUMBER),
+UNIQUE (DNAME),
+FOREIGN KEY (MGRSSN) REFERENCES EMP );
+5
+
+REFERENTIAL INTEGRITY OPTIONS
+
+
+We can specify RESTRICT, CASCADE, SET NULL or
+SET DEFAULT on referential integrity constraints
+(foreign keys)
+CREATE TABLE DEPT
+( DNAME
+VARCHAR(10) NOT NULL,
+DNUMBER
+INTEGER
+NOT NULL,
+MGRSSN
+CHAR(9),
+MGRSTARTDATE
+CHAR(9),
+PRIMARY KEY (DNUMBER),
+UNIQUE (DNAME),
+FOREIGN KEY (MGRSSN) REFERENCES EMP
+ON DELETE SET DEFAULT ON UPDATE CASCADE );
+
+6
+
+DROP TABLE
+Used to remove a relation (base table) and its
+definition
+ The relation can no longer be used in queries,
+updates, or any other commands since its
+description no longer exists
+ Example:
+
+
+DROP TABLE DEPENDENT;
+7
+
+ALTER TABLE
+
+
+
+
+
+
+Used to add an attribute to one of the base relations
+The new attribute will have NULLs in all the tuples of the
+relation right after the command is executed; hence, the
+NOT NULL constraint is not allowed for such an attribute
+Example:
+ALTER TABLE EMPLOYEE ADD JOB VARCHAR(12);
+
+
+
+The database users must still enter a value for the new
+attribute JOB for each EMPLOYEE tuple. This can be done
+using the UPDATE command.
+8
+
+Retrieval Queries in SQL (cont.)
+
+
+Basic form of the SQL SELECT statement is called
+a mapping or a SELECT-FROM-WHERE block
+SELECT <attribute list>
+FROM <table list>
+WHERE <condition>
+ <attribute list> is a list of attribute names whose values are to
+
+be retrieved by the query
+ <table list> is a list of the relation names required to process
+the query
+ <condition> is a conditional (Boolean) expression that
+9
+identifies the tuples to be retrieved by the query
+
+Simple SQL Queries
+
+
+
+
+Basic SQL queries correspond to using the SELECT, PROJECT, and
+JOIN operations of the relational algebra
+Example of a simple query on one relation
+Query : Retrieve the birthdate and address of the employee
+whose name is 'John B. Smith'.
+SELECT
+FROM
+WHERE
+AND
+
+
+BDATE, ADDRESS
+EMPLOYEE
+FNAME='John' AND MINIT='B’
+LNAME='Smith’
+
+Similar to a SELECT-PROJECT pair of relational algebra operations; the
+SELECT-clause specifies the projection attributes and the WHERE-clause
+specifies the selection condition
+10
+
+Simple SQL Queries (cont.)
+
+
+Retrieve the name and address of all employees who work for the 'Research'
+department.
+
+SELECT
+FROM
+WHERE
+
+FNAME, LNAME, ADDRESS
+EMPLOYEE, DEPARTMENT
+DNAME='Research' AND
+DNUMBER=DNO
+
+ Similar to a SELECT-PROJECT-JOIN sequence of relational
+
+algebra operations
+ (DNAME='Research') is a selection condition (corresponds to a
+SELECT operation in relational algebra)
+ (DNUMBER=DNO) is a join condition (corresponds to a JOIN
+operation in relational algebra)
+11
+
+Aliases, * and DISTINCT, Empty WHERE-clause
+
+
+
+
+In SQL, we can use the same name for two (or more)
+attributes as long as the attributes are in different
+relations
+A query that refers to two or more attributes with the
+same name must qualify the attribute name with the
+relation name by prefixing the relation name to the
+attribute name
+
+Example:
+ EMPLOYEE.DNAME, DEPARTMENT.DNAME
+12
+
+ALIASES
+
+
+
+
+Some queries need to refer to the same relation twice
+In this case, aliases are given to the relation name
+For each employee, retrieve the employee's name, and the
+name of his or her immediate supervisor.
+SELECT
+FROM
+WHERE
+
+E.FNAME, E.LNAME, S.FNAME, S.LNAME
+EMPLOYEE E S
+E.SUPERSSN=S.SSN
+
+ the alternate relation names E and S are called aliases
+
+or tuple
+
+variables for the EMPLOYEE relation
+ We can think of E and S as two different copies of EMPLOYEE; E
+represents employees in role of supervisees and S represents
+employees in role of supervisors
+13
+
+UNSPECIFIED WHERE-clause
+
+
+
+
+
+A missing WHERE-clause indicates no condition; hence,
+all tuples of the relations in the FROM-clause are
+selected
+This is equivalent to the condition WHERE TRUE
+Retrieve the SSN values for all employees.
+SELECT
+FROM
+
+
+
+SSN
+EMPLOYEE
+
+If more than one relation is specified in the FROM-clause and
+there is no join condition, then the CARTESIAN PRODUCT of tuples
+is selected
+14
+
+USE OF *
+
+
+To retrieve all the attribute values of the selected
+tuples, a * is used, which stands for all the
+attributes
+Examples:
+SELECT
+FROM
+WHERE
+
+*
+EMPLOYEE
+DNO=5
+
+SELECT
+FROM
+WHERE
+
+*
+EMPLOYEE, DEPARTMENT
+DNAME='Research' AND
+DNO=DNUMBER
+
+15
+
+USE OF DISTINCT
+
+
+
+
+SQL does not treat a relation as a set; duplicate tuples
+can appear
+To eliminate duplicate tuples in a query result, the
+keyword DISTINCT is used
+For example, the result of query may have duplicate
+SALARY values whereas below one does not have any
+duplicate values
+1.
+
+SELECT
+FROM
+
+SALARY
+EMPLOYEE
+2.
+SELECT
+FROM
+
+DISTINCT SALARY
+EMPLOYEE
+16
+
+SET OPERATIONS
+
+
+
+SQL has directly incorporated some set operations
+There is a union operation (UNION), and in some
+versions of SQL there are set difference (MINUS) and
+intersection (INTERSECT) operations
+
+
+
+The resulting relations of these set operations are sets of
+tuples; duplicate tuples are eliminated from the result
+
+
+
+The set operations apply only to union compatible
+relations ; the two relations must have the same
+attributes and the attributes must appear in the same
+order
+
+17
+
+NESTING OF QUERIES
+
+
+
+
+A complete SELECT query, called a nested query , can be specified
+within the WHERE-clause of another query, called the outer query
+Many of the previous queries can be specified in an alternative
+form using nesting
+Retrieve the name and address of all employees who work for the
+'Research' department.
+
+SELECT
+FROM
+WHERE
+FROM
+WHERE
+
+FNAME, LNAME, ADDRESS
+EMPLOYEE
+DNO IN (SELECT DNUMBER
+DEPARTMENT
+DNAME='Research' )
+18
+
+CORRELATED NESTED QUERIES
+
+
+
+
+If a condition in the WHERE-clause of a nested query references
+an attribute of a relation declared in the outer query , the two
+queries are said to be correlated
+Retrieve the name of each employee who has a dependent with
+the same first name as the employee.
+SELECT
+FROM
+WHERE
+
+E.FNAME, E.LNAME
+EMPLOYEE AS E
+E.SSN IN (SELECT
+FROM
+WHERE
+E.FNAME =
+
+ESSN
+DEPENDENT
+ESSN=E.SSN AND
+DEPENDENT_NAME)
+19
+
+NULLS IN SQL QUERIES
+
+
+
+
+
+
+
+SQL allows queries that check if a value is NULL (missing or
+undefined or not applicable)
+SQL uses IS or IS NOT to compare NULLs because it considers each
+NULL value distinct from other NULL values, so equality comparison
+is not appropriate .
+Retrieve the names of all employees who do not have supervisors.
+SELECT
+FNAME, LNAME
+FROM
+EMPLOYEE
+WHERE
+SUPERSSN IS NULL
+Note: If a join condition is specified, tuples with NULL values for the
+join attributes are not included in the result
+20
+
+Joined Relations Feature
+
+
+Examples:
+SELECT
+FROM
+WHERE
+
+E.FNAME, E.LNAME, S.FNAME, S.LNAME
+EMPLOYEE E S
+E.SUPERSSN=S.SSN
+
+can be written as:
+
+SELECT
+FROM
+
+E.FNAME, E.LNAME, S.FNAME, S.LNAME
+(EMPLOYEE E LEFT OUTER JOIN EMPLOYEES
+ON E.SUPERSSN=S.SSN)
+
+21
+
+Joined Relations Feature (cont.)
+SELECT
+FROM
+WHERE
+
+
+
+FNAME, LNAME, ADDRESS
+EMPLOYEE, DEPARTMENT
+DNAME='Research' AND DNUMBER=DNO
+
+could be written as:
+SELECT
+FROM
+WHERE
+
+FNAME, LNAME, ADDRESS
+(EMPLOYEE JOIN DEPARTMENT ON DNUMBER=DNO)
+DNAME='Research’
+
+or as:
+
+SELECT
+FROM
+WHERE
+
+FNAME, LNAME, ADDRESS
+(EMPLOYEE NATURAL JOIN DEPARTMENT
+AS DEPT(DNAME, DNO, MSSN, MSDATE)
+DNAME='Research’
+22
+
+AGGREGATE FUNCTIONS
+Include COUNT, SUM, MAX, MIN, and AVG
+ Find the maximum salary, the minimum salary,
+and the average salary among all employees.
+
+
+SELECT MAX(SALARY), MIN(SALARY),
+AVG(SALARY)
+FROM EMPLOYEE
+ Some SQL implementations may not allow more than one
+
+function in the SELECT-clause
+23
+
+GROUPING
+
+
+In many cases, we want to apply the aggregate functions
+to subgroups of tuples in a relation
+
+
+
+Each subgroup of tuples consists of the set of tuples that
+have the same value for the grouping attribute(s)
+
+
+
+The function is applied to each subgroup independently
+
+
+
+SQL has a GROUP BY-clause for specifying the grouping
+attributes, which must also appear in the SELECT-clause
+24
+
+GROUPING (cont.)
+
+
+For each project, retrieve the project number,
+project name, and the number of employees
+who work on that project.
+SELECT
+FROM
+WHERE
+GROUP BY
+
+PNUMBER, PNAME, COUNT (*)
+PROJECT, WORKS_ON
+PNUMBER=PNO
+PNUMBER, PNAME
+
+ In this case, the grouping and functions are applied
+
+after the joining of the two relations
+25
+
+THE HAVING-CLAUSE
+
+
+Sometimes we want to retrieve the values of
+these functions for only those groups that
+satisfy certain conditions
+
+
+
+The HAVING-clause is used for specifying a
+selection condition on groups (rather than on
+individual tuples)
+
+26
+
+THE HAVING-CLAUSE (cont.)
+
+
+For each project on which more than two employees
+work , retrieve the project number, project name,
+and the number of employees who work on that
+project.
+
+SELECT
+FROM
+WHERE
+GROUP BY
+HAVING
+
+PNUMBER, PNAME, COUNT (*)
+PROJECT, WORKS_ON
+PNUMBER=PNO
+PNUMBER, PNAME
+COUNT (*) > 2
+27
+
+ORDER BY
+
+
+
+
+
+The ORDER BY clause is used to sort the tuples in a query
+result based on the values of some attribute(s)
+The default order is in ascending order of values
+The keyword DESC gives a descending order;
+The keyword ASC gives anascending order
+
+
+Retrieve a list of employees and the projects each works in, ordered by the
+employee's department, and within each department ordered alphabetically
+by employee last name.
+
+SELECT DNAME, LNAME, FNAME, PNAME
+FROM DEPARTMENT, EMPLOYEE, WORKS_ON, PROJECT
+WHERE DNUMBER=DNO AND SSN=ESSN AND
+PNO=PNUMBER
+ORDER BY
+DNAME, LNAME
+28
+
+ARITHMETIC OPERATIONS
+The standard arithmetic operators '+', '-'. '*', and
+'/' (for addition, subtraction, multiplication, and
+division, respectively) can be applied to numeric
+values in an SQL query result
+ Show the effect of giving all employees who work
+on the 'ProductX' project a 10% raise.
+
+
+SELECT
+FROM
+WHERE
+
+FNAME, LNAME, 1.1*SALARY
+EMPLOYEE, WORKS_ON, PROJECT
+SSN=ESSN AND PNO=PNUMBER AND
+PNAME='ProductX’
+29
+
+Summary of SQL Queries
+
+
+A query in SQL can consist of up to six clauses,
+but only the first two, SELECT and FROM, are
+mandatory. The clauses are specified in the
+following order:
+SELECT
+FROM
+[WHERE
+[GROUP BY
+[HAVING
+[ORDER BY
+
+<attribute list>
+<table list>
+<condition>]
+<grouping attribute(s)>]
+<group condition>]
+<attribute list>]
+
+30
+
+Specifying Updates in SQL
+
+
+There are three SQL commands to modify the
+database; INSERT, DELETE, and UPDATE
+
+31
+
+INSERT
+In its simplest form, it is used to add one or
+more tuples to a relation
+ Attribute values should be listed in the same
+order as the attributes were specified in the
+CREATE TABLE command
+
+
+32
+
+INSERT (cont.)
+
+
+Example:
+INSERT
+VALUES
+
+
+
+
+
+INTO EMPLOYEE
+('Richard','K','Marini', '653298653', '30-DEC-52',
+'98 Oak Forest,Katy,TX', 'M', 37000,'987654321', 4 )
+
+An alternate form of INSERT specifies explicitly the attribute
+names that correspond to the values in the new tuple
+Attributes with NULL values can be left out
+Example: Insert a tuple for a new EMPLOYEE for whom we only
+know the FNAME, LNAME, and SSN attributes.
+INSERT
+VALUES
+
+INTO EMPLOYEE (FNAME, LNAME, SSN)
+('Richard', 'Marini', '653298653')
+33
+
+INSERT (cont.)
+
+
+Important Note: Only the constraints specified in
+the DDL commands are automatically enforced by
+the DBMS when updates are applied to the
+database
+
+Another variation of INSERT allows insertion of
+multiple tuples resulting from a query into a
+relation
+ The result may not be up to date when we are
+inserting tuples through a query.
+
+
+34
+
+INSERT (cont.)
+ Example: Suppose we want to create a temporary table that
+
+has the name, number of employees, and total salaries for
+each department. A table DEPTS_INFO is created by first, and is
+loaded with the summary information retrieved from the
+database by the query in second.
+CREATE TABLE DEPTS_INFO
+(DEPT_NAME
+NO_OF_EMPS
+TOTAL_SAL
+
+VARCHAR(10),
+INTEGER,
+INTEGER);
+
+INSERT INTO
+
+DEPTS_INFO (DEPT_NAME,
+NO_OF_EMPS, TOTAL_SAL)
+SELECT
+DNAME, COUNT (*), SUM (SALARY)
+FROM
+DEPARTMENT, EMPLOYEE
+WHERE
+DNUMBER=DNO
+GROUP BY
+DNAME ;
+
+35
+
+DELETE
+
+
+
+
+
+
+
+
+
+Removes tuples from a relation
+Includes a WHERE-clause to select the tuples to be
+deleted
+Tuples are deleted from only one table at a time (unless
+CASCADE is specified on a referential integrity constraint)
+A missing WHERE-clause specifies that all tuples in the
+relation are to be deleted; the table then becomes an
+empty table
+The number of tuples deleted depends on the number of
+tuples in the relation that satisfy the WHERE-clause
+Referential integrity should be enforced
+36
+
+DELETE (cont.)
+
+
+Examples:
+DELETE
+WHERE
+
+FROM EMPLOYEE
+LNAME='Brown’
+
+DELETE
+WHERE
+
+FROM EMPLOYEE
+SSN='123456789’
+
+DELETE
+WHERE
+
+FROM EMPLOYEE
+DNO IN(SELECT
+DNUMBER
+FROM DEPARTMENT
+WHERE DNAME='Research')
+
+DELETE
+
+FROM EMPLOYEE
+37
+
+UPDATE
+
+
+
+
+
+
+
+Used to modify attribute values of one or more selected
+tuples
+A WHERE-clause selects the tuples to be modified
+An additional SET-clause specifies the attributes to be
+modified and their new values
+
+Each command modifies tuples in the same relation
+Referential integrity should be enforced
+
+38
+
+UPDATE (cont.)
+
+
+Example: Change the location and controlling
+department number of project number 10 to
+'Bellaire' and 5, respectively.
+UPDATE
+SET
+WHERE
+
+PROJECT
+PLOCATION = 'Bellaire', DNUM = 5
+PNUMBER=10
+
+39
+
+UPDATE (cont.)
+
+
+Example: Give all employees in the 'Research' department a 10%
+raise in salary.
+UPDATE
+SET
+WHERE
+
+
+
+
+
+EMPLOYEE
+SALARY = SALARY *1.1
+DNO IN (SELECT
+DNUMBER
+FROM
+DEPARTMENT
+WHERE
+DNAME='Research')
+
+In this request, the modified SALARY value depends on the original
+SALARY value in each tuple
+The reference to the SALARY attribute on the right of = refers to
+the old SALARY value before modification
+The reference to the SALARY attribute on the left of = refers to the
+new SALARY value after modification
+40
+
+References
+• Chapter
+
+8 : Fundamentals of Database Systems
+(5th Edition) By Remez Elmasri & Shamkant B.
+Navathe
+
+41
+
+Questions ???
+
+42
+
+

@@ -1,0 +1,380 @@
+Purchasing
+Management
+Dr. (Mrs) Amila Jayarathne
+
+Overview
+• What do you mean by purchasing?
+
+Overview
+• Purchasing – act of obtaining merchandise, capital equipment,
+raw materials, services or maintenance, repair and operating
+supplies in exchange for money or its equivalent.
+• Two categories
+• Merchants
+• Ad - volume discounts, transportation economy, storage efficiency
+• Create value – consolidating merchandise, breaking bulk, providing
+essential logistical services
+
+• Industrial buyers – RM for conversion purpose
+• Manufacturers, restaurants, florists
+
+Role of Purchasing in an Organization
+• Significant
+• US manufacturing sector - 50% of each sales dollar spent for
+purchasing
+• Value spending for purchasing is some time higher than the value
+added through manufacturing
+• Wal-Mart – 78% of its net sales represent the money spent for
+purchasing
+
+• Primary goal(s)
+• What is the primary goal(s) of purchasing?
+• How to achieve the objectives?
+
+Role of Purchasing in an Organization
+• Significant
+• US manufacturing sector - 50% of each sales dollar spent for
+purchasing
+• Value spending for purchasing is some time higher than the value
+added through manufacturing
+• Wal-Mart – 78% of its net sales represent the money spent for
+purchasing
+
+• Primary goal(s)
+• Uninterrupted flows of raw materials at the lowest total cost, to
+improve quality of the finished goods produced, and to optimize
+customer satisfaction.
+
+• How to achieve the objectives?
+• Seek better materials,
+• Reliable suppliers,
+• working closely with and exploiting the expertise of strategic
+suppliers to improve the quality of RM
+• Get involvement in new product design and development efforts
+
+The Purchasing Process
+• Draft the manual process of purchasing in a
+company/organization
+
+The Purchasing Process
+•
+•
+•
+•
+
+Manual process
+Electronic process - result of EDI
+Advantages
+Time savings
+•
+•
+•
+•
+
+•
+•
+•
+•
+•
+•
+•
+
+Selecting and maintaining a list of potential suppliers
+Processing requests for quotation and PO
+Making repeat purchases
+Automatic bidding
+
+Cost savings
+Accuracy
+Real Time
+Mobility
+Tractability
+Management - store important suppliers’ information
+Benefits to the suppliers
+
+Small Value Purchase Orders
+• Extra burden to purchasing managers - Administrative costs and order
+cycle time
+• What strategies can be implemented to overcome these issues?
+
+Small Value Purchase Orders
+• Extra burden to purchasing managers - Administrative costs and order
+cycle time
+• Alternatives
+• Procurement credit cards/Corporate purchasing cards
+• Blank Cheque Purchase Orders
+• Blanket or Open-End Purchase Orders – covers a variety or items and is
+negotiated for repeated supply over a fixed time period such as
+quarterly or yearly
+• Open-end PO – additional items and expiration dates can be
+renegotiated.
+• Stockless Buying or System Contracting – suppliers should maintain the
+minimum inventory level
+• Petty cash
+• Standardization and Simplification of Materials and Components
+• Accumulating and Small Orders to Create a Large Order
+• Using a Fixed order interval for specific categories of
+materials/supplies
+
+Sourcing Decisions: The Make-or-Buy
+Decisions
+• Outsourcing – buying materials and components from
+suppliers instead of making them in-house.
+• In past – prefer make option using backward or forward
+integration
+• Not all functions can be outsourced – mostly core in in-house
+• Reasons for buying or outsourcing
+
+• Reasons for making
+
+Sourcing Decisions: The Make-or-Buy
+Decisions
+• Outsourcing – buying materials and components from suppliers instead
+of making them in-house.
+• In past – prefer make option using backward or forward integration
+• Not all functions can be outsourced – mostly core in in-house
+• Reasons for buying or outsourcing
+•
+•
+•
+•
+
+Cost advantages
+Insufficient capacity
+Lack of expertise
+Quality
+
+• Reasons for making
+•
+•
+•
+•
+•
+•
+
+Protect proprietary technology
+No competent supplier
+Better quality control
+Use existing idle capacity
+Control of lead-time, transportation and warehousing cost
+Lower cost
+
+Make –or-Buy Break-Even Analysis
+• Annual requirements = 15,000 units
+• Cost
+Make Option
+Buy Option
+FC
+$25,000.00
+$500,00
+VC
+$5.00
+$7.00
+BE
+
+Make –or-Buy Break-Even Analysis
+• Annual requirements = 15,000 units
+• Cost
+Make Option
+Buy Option
+FC
+$25,000.00
+$500,00
+VC
+$5.00
+$7.00
+BE
+TC to make = TC to buy
+BEQ = 12250
+TC at BE option = 25,000.00 + 5 x 12,250 = $86250
+TC for making = 500 + 5 x 15000 = $87250
+TC for buying = 25000 + 7 x 15000 = $105500
+
+Role of Supply Base
+• Strategic Role of suppliers
+• Suppliers not only provides products/supplies but also;
+• Product and process technology and knowledge to support the
+buyer’s operations, particularly in product design – supplier
+involvement
+• Information on trends, processes, designs
+• Information on supply market – shortages, price increases,
+political situations - may threaten supplies of vital materials
+• Capacity for meeting unexpected demand
+• Cost efficiency due to economies of scale, since the supplier is
+likely to produce the same item for multiple buyers
+
+Supplier Selection
+• What are the factors considering when selecting suppliers?
+
+Supplier Selection
+• Factors considering
+•
+•
+•
+•
+•
+•
+•
+•
+•
+•
+
+Product and process technologies
+Willingness to share technologies and information
+Quality
+Cost
+Reliability
+Order system and cycle time
+Capacity
+Communication capability
+Location
+Service
+
+How many suppliers to use?
+• Reasons for favouring single supplier
+
+• Reasons for favouring more than one supplier
+
+How many suppliers to use?
+• Reasons for favouring single supplier
+•
+•
+•
+•
+•
+•
+
+To establish a good relationship
+Less quality variability
+Lower cost
+Transportation economies
+Proprietary product or process purchase
+Volume too small to split
+
+• Reasons for favouring more than one supplier
+•
+•
+•
+•
+•
+
+Need capacity
+Spread the risk of supply interruption
+Create competition
+Information
+Dealing with special kinds of businesses
+
+Purchasing Organization: Centralized vs
+Decentralized purchasing
+• Advantages of centralization
+
+Hybrid Purchasing
+Organization
+
+• Advantages of decentralization
+
+Purchasing Organization: Centralized vs
+Decentralized purchasing
+• Advantages of centralization
+•
+•
+•
+•
+•
+•
+
+Concentrated volume
+Avoid duplication
+Specialization
+Lower transportation costs
+No competition within units
+Common supply base
+
+• Advantages of decentralization
+• Closer knowledge of requirements
+• Local souring
+• Less bureaucracy
+
+Hybrid Purchasing
+Organization
+
+International Purchasing/Global Sourcing
+• Provide opportunities to improve
+• Quality
+• Cost
+• Delivery performance
+
+• Need additional skills and knowledge to deal with
+international suppliers, logistics, communication, political and
+other issues – tariff and non-tariff barriers
+• Variety of Options
+•
+•
+•
+•
+
+International purchasing office
+Import broker or sales agent – do not take title to the goods
+Import merchant – buy and take title to the goods
+Trading company – a wide variety of goods
+
+Reasons for Global Sourcing
+• Why do companies source globally?
+
+Reasons for Global Sourcing
+•
+•
+•
+•
+•
+•
+
+Lower price
+Better quality
+Overseas supplier holding the patent to the product
+Faster delivery to foreign units
+Better services
+Better process or product technology
+
+Potential challenges for global
+sourcing
+• Global sourcing increased due to improvement of
+communication and transportation technologies, reduction of
+internal trade barriers, deregulation of transportation industry
+• What challenges are involving in global sourcing?
+
+Potential challenges for
+global sourcing
+• Global sourcing increased due to improvement of
+communication and transportation technologies, reduction of
+internal trade barriers, deregulation of transportation industry
+• Complexity and cost involved in
+•
+•
+•
+•
+•
+
+Selecting foreign suppliers
+Dealing with duties, tariffs,
+Custom clearance
+Currency exchange
+Political, labor and legal problems
+
+Countertrade
+• In which goods and/or services of domestic firms are exchanged for
+goods and/or services of equal value or in combination with
+currency from foreign firms
+• Barter – complete exchange of goods and/or services of equal value
+without the exchange of currency
+• Offset- an exchange agreement for industrial goods and /or services
+as a condition of military-related export
+• Direct offset – usually involves coproduction, or joint venture, and
+exchange of related goods and/or services
+• Indirect offset – involves exchange of goods and/or services
+unrelated to the aerospace or defense sector
+• Counterpurchase – arrangement whereby the original exporter
+either buys or finds a buyers to purchase a specified amount of
+unrelated goods and/or services from the original importer
+
+
