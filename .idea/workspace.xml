@@ -2,36 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="84e6da25-75ea-4999-b50b-c9b92de92a96" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/Big Data/Week 3BigData.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/Big Data/Week 3_B12BigData.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/DataStrucAlgo6.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/DataStrucAlgo6.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/Database/Database_01_Introduction.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/Database/Database_02_lecture_2.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/Database/Database_02_lecture_2.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/Database/Database_03_lecture_3_new.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/Database/Database_04.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/Database/Database_lecture_5_new.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/Database/Database_lecture_5_new.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/Database/Database_lecture_6_new.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/Database/Database_lecture_7_new mid.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/Database/Database_lecture_8_new mid.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/PrinciplesofMana5.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/PrinciplesofMana5.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/SCM/Introduction SCM.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/SCM/IntroductionSCM.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/SCM/Operational Issues SCM.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/SCM/Operational Issues SCM.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/SCM/Purchasing Management SCM.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/SCM/Purchasing Management SCM.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/SCM/Supply chain.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/SCM/Supply chain.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/Strategic Management/E3 - E4 Assessing the Industry.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/Strategic Management/E7 - Ensuring the position.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/Strategic Management/Strategic12.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/Strategic Management/Strategic12.txt" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KeyPhrasesNew.py" afterPath="$PROJECT_DIR$/KeyPhrasesNew.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SemanticMatch.py" afterPath="$PROJECT_DIR$/SemanticMatch.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -46,12 +18,24 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="KeyPhrasesNew.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="KeyPhrasesNew.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/KeyPhrasesNew.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1717">
-              <caret line="156" column="28" lean-forward="true" selection-start-line="156" selection-start-column="28" selection-end-line="156" selection-end-column="28" />
+            <state relative-caret-position="204">
+              <caret line="171" column="54" lean-forward="true" selection-start-line="171" selection-start-column="54" selection-end-line="171" selection-end-column="54" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SemanticMatch.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/SemanticMatch.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="155">
+              <caret line="298" column="47" lean-forward="true" selection-start-line="298" selection-start-column="47" selection-end-line="298" selection-end-column="47" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -67,14 +51,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>database sta</find>
-      <find>hierarchi</find>
-      <find>entity</find>
-      <find>entity type</find>
-      <find>sub</find>
-      <find>tuple ca</find>
-      <find>tuple varia</find>
-      <find>interd</find>
       <find>strategic thinking</find>
       <find>lag factors</find>
       <find>competitive</find>
@@ -89,14 +65,22 @@
       <find>moodle</find>
       <find>print</find>
       <find>key_phrases</find>
+      <find>similarity</find>
+      <find>metric</find>
+      <find>info_content_norm</find>
+      <find>brown_freqs</find>
+      <find>brown.sents()</find>
       <find>ALPHA</find>
       <find>BETA</find>
       <find>ETA</find>
       <find>PHI</find>
       <find>DELTA</find>
-      <find>similarity</find>
-      <find>metric</find>
-      <find>info_content_norm</find>
+      <find>math</find>
+      <find>sys</find>
+      <find>l_dist</find>
+      <find>most_similar_word</find>
+      <find>semantic_vector</find>
+      <find>semantic_similarity</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -123,8 +107,8 @@
         <option value="$PROJECT_DIR$/FormatList.py" />
         <option value="$PROJECT_DIR$/SimpleSemanticMatch.py" />
         <option value="$PROJECT_DIR$/WordnetSimilarity.py" />
-        <option value="$PROJECT_DIR$/SemanticMatch.py" />
         <option value="$PROJECT_DIR$/KeyPhrasesNew.py" />
+        <option value="$PROJECT_DIR$/SemanticMatch.py" />
       </list>
     </option>
   </component>
@@ -562,6 +546,86 @@
           <line>189</line>
           <option name="timeStamp" value="270" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/SemanticMatch.py</url>
+          <line>281</line>
+          <option name="timeStamp" value="271" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/SemanticMatch.py</url>
+          <line>301</line>
+          <option name="timeStamp" value="272" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/SemanticMatch.py</url>
+          <line>164</line>
+          <option name="timeStamp" value="273" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/SemanticMatch.py</url>
+          <line>166</line>
+          <option name="timeStamp" value="276" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/SemanticMatch.py</url>
+          <line>169</line>
+          <option name="timeStamp" value="277" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/SemanticMatch.py</url>
+          <line>198</line>
+          <option name="timeStamp" value="278" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/SemanticMatch.py</url>
+          <line>199</line>
+          <option name="timeStamp" value="279" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/SemanticMatch.py</url>
+          <line>133</line>
+          <option name="timeStamp" value="280" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/SemanticMatch.py</url>
+          <line>138</line>
+          <option name="timeStamp" value="281" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/SemanticMatch.py</url>
+          <line>19</line>
+          <option name="timeStamp" value="283" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/SemanticMatch.py</url>
+          <line>184</line>
+          <option name="timeStamp" value="286" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/SemanticMatch.py</url>
+          <line>29</line>
+          <option name="timeStamp" value="287" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/SemanticMatch.py</url>
+          <line>53</line>
+          <option name="timeStamp" value="288" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/SemanticMatch.py</url>
+          <line>56</line>
+          <option name="timeStamp" value="289" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/SemanticMatch.py</url>
+          <line>74</line>
+          <option name="timeStamp" value="290" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/SemanticMatch.py</url>
+          <line>79</line>
+          <option name="timeStamp" value="291" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
@@ -573,7 +637,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="271" />
+      <option name="time" value="292" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -582,21 +646,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../../sagara sir/keyphrase/879414-767dd52cab12528e70735fedc3e2c39d88106835/879414-767dd52cab12528e70735fedc3e2c39d88106835/nltk-intro.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="33" column="6" lean-forward="false" selection-start-line="33" selection-start-column="6" selection-end-line="33" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36-32/Lib/site-packages/nltk/chunk/regexp.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="1129" column="0" lean-forward="false" selection-start-line="1129" selection-start-column="0" selection-end-line="1129" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36-32/Lib/codecs.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5270">
@@ -817,13 +866,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SemanticMatch.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2710">
-          <caret line="234" column="22" lean-forward="true" selection-start-line="234" selection-start-column="22" selection-end-line="234" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PDFExtract.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -831,11 +873,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://C:/ProgramData/Miniconda3/Lib/site-packages/nltk/corpus/reader/tagged.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="202" column="0" lean-forward="false" selection-start-line="202" selection-start-column="0" selection-end-line="202" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2016.3/system/python_stubs/152262123/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="4407" column="8" lean-forward="false" selection-start-line="4407" selection-start-column="8" selection-end-line="4407" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/KeyPhrasesNew.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1717">
-          <caret line="156" column="28" lean-forward="true" selection-start-line="156" selection-start-column="28" selection-end-line="156" selection-end-column="28" />
+        <state relative-caret-position="204">
+          <caret line="171" column="54" lean-forward="true" selection-start-line="171" selection-start-column="54" selection-end-line="171" selection-end-column="54" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SemanticMatch.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="298" column="47" lean-forward="true" selection-start-line="298" selection-start-column="47" selection-end-line="298" selection-end-column="47" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

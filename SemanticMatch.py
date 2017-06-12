@@ -6,14 +6,6 @@ import math
 import numpy as np
 import sys
 
-# Parameters to the algorithm. Currently set to values that was reported
-# in the paper to produce "best" results.
-ALPHA = 0.2
-BETA = 0.45
-ETA = 0.4
-PHI = 0.2
-DELTA = 0.85
-
 brown_freqs = dict()
 N = 0
 
@@ -23,6 +15,7 @@ def get_best_synset_pair(word_1, word_2):
     """
     Choose the pair with highest path similarity among all pairs.
     Mimics pattern-seeking behavior of humans.
+
     """
     max_sim = -1.0
     synsets_1 = wn.synsets(word_1)
@@ -45,10 +38,12 @@ def get_best_synset_pair(word_1, word_2):
 
 def length_dist(synset_1, synset_2):
     """
+    sysnset represents a word
     Return a measure of the length of the shortest path in the semantic
-    ontology (Wordnet in our case as well as the paper's) between two
-    synsets.
+    ontology between two synsets.
+
     """
+    # integer larger than any practical  list or string index
     l_dist = sys.maxsize
     if synset_1 is None or synset_2 is None:
         return 0.0
@@ -58,6 +53,7 @@ def length_dist(synset_1, synset_2):
     else:
         wset_1 = set([str(x.name()) for x in synset_1.lemmas()])
         wset_2 = set([str(x.name()) for x in synset_2.lemmas()])
+        # assume they are similar from lemmas
         if len(wset_1.intersection(wset_2)) > 0:
             # if synset_1 != synset_2 but there is word overlap, return 1.0
             l_dist = 1.0
@@ -67,12 +63,12 @@ def length_dist(synset_1, synset_2):
             if l_dist is None:
                 l_dist = 0.0
     # normalize path length to the range [0,1]
-    return math.exp(-ALPHA * l_dist)
+    return math.exp(-0.2 * l_dist)
 
 
 def hierarchy_dist(synset_1, synset_2):
     """
-    Return a measure of depth in the ontology to model the fact that
+    Return a measure of depth in the ontology to model
     nodes closer to the root are broader and have less semantic similarity
     than nodes further away from the root.
     """
@@ -84,10 +80,13 @@ def hierarchy_dist(synset_1, synset_2):
         h_dist = max([x[1] for x in synset_1.hypernym_distances()])
     else:
         # find the max depth of least common subsumer
+        # ex: {Synset('object.n.01'): 4},, {Synset('person.n.01'): 0}.. if synset_1 is person
         hypernyms_1 = {x[0]: x[1] for x in synset_1.hypernym_distances()}
         hypernyms_2 = {x[0]: x[1] for x in synset_2.hypernym_distances()}
-        lcs_candidates = set(hypernyms_1.keys()).intersection(
-            set(hypernyms_2.keys()))
+
+        # look for similar words
+        lcs_candidates = set(hypernyms_1.keys()).intersection(set(hypernyms_2.keys()))
+
         if len(lcs_candidates) > 0:
             lcs_dists = []
             for lcs_candidate in lcs_candidates:
@@ -97,15 +96,23 @@ def hierarchy_dist(synset_1, synset_2):
                 lcs_d2 = 0
                 if lcs_candidate in hypernyms_2:
                     lcs_d2 = hypernyms_2[lcs_candidate]
+                # compare the distances for the same word from 2 sets and get the maximum
                 lcs_dists.append(max([lcs_d1, lcs_d2]))
+            # from all get the max, greater the distance higher value
             h_dist = max(lcs_dists)
         else:
             h_dist = 0
-    return ((math.exp(BETA * h_dist) - math.exp(-BETA * h_dist)) /
-            (math.exp(BETA * h_dist) + math.exp(-BETA * h_dist)))
+    # normalize the distance and return
+    return ((math.exp(0.45 * h_dist) - math.exp(-0.45 * h_dist)) /
+            (math.exp(0.45 * h_dist) + math.exp(-0.45 * h_dist)))
 
 
 def word_similarity(word_1, word_2):
+    """
+    :param word_1: word in sentence
+    :param word_2: each word in union
+
+    """
     synset_pair = get_best_synset_pair(word_1, word_2)
     return (length_dist(synset_pair[0], synset_pair[1]) *
             hierarchy_dist(synset_pair[0], synset_pair[1]))
@@ -114,11 +121,13 @@ def word_similarity(word_1, word_2):
 ######################### sentence similarity ##########################
 
 def most_similar_word(word, word_set):
+
     """
     Find the word in the joint word set that is most similar to the word
-    passed in. We use the algorithm above to compute word similarity between
-    the word and each word in the joint word set, and return the most similar
-    word and the actual similarity value.
+    passed in.
+    word : word in phrase
+    word_set : union of words
+
     """
     max_sim = -1.0
     sim_word = ""
@@ -131,37 +140,50 @@ def most_similar_word(word, word_set):
 
 
 def info_content(lookup_word):
+
     """
+
     Uses the Brown corpus available in NLTK to calculate a Laplace
     smoothed frequency distribution of words, then uses this information
     to compute the information content of the lookup_word.
+
+    lookup_word = word that is passed from the sentence
+
     """
     global N
+    # N is the number of words
     if N == 0:
-        # poor man's lazy evaluation
+        # extract brown corpus sentences
         for sent in brown.sents():
             for word in sent:
                 word = word.lower()
+                # create a dictionary key is the word and value is the count
                 if word not in brown_freqs:
                     brown_freqs[word] = 0
                 brown_freqs[word] = brown_freqs[word] + 1
                 N = N + 1
     lookup_word = lookup_word.lower()
+    # get the frequency for the word if in brown
     n = 0 if lookup_word not in brown_freqs else brown_freqs[lookup_word]
+
+    # probability of word over total words
     return 1.0 - (math.log(n + 1) / math.log(N + 1))
 
 
 def semantic_vector(words, joint_words, info_content_norm):
     """
-    Computes the semantic vector of a sentence. The sentence is passed in as
-    a collection of words. The size of the semantic vector is the same as the
-    size of the joint word set. The elements are 1 if a word in the sentence
-    already exists in the joint word set, or the similarity of the word to the
-    most similar word in the joint word set if it doesn't. Both values are
-    further normalized by the word's (and similar word's) information content
-    if info_content_norm is True.
+
+    Computes the semantic vector of a sentence.
+    words = words of the sentence
+    The size of the semantic vector = size of the joint word set.
+    1 = word in sentence in wordset
+    or the similarity of the word to the most similar word in the joint word set if it doesn't.
+    info_content_norm = to normalize using brownbag information content (probability of words)
+
     """
+    # set of words in sentence
     sent_set = set(words)
+    # create an array of zeros of the length of words union
     semvec = np.zeros(len(joint_words))
     i = 0
     for joint_word in joint_words:
@@ -169,14 +191,16 @@ def semantic_vector(words, joint_words, info_content_norm):
             # if word in union exists in the sentence, s(i) = 1 (unnormalized)
             semvec[i] = 1.0
             if info_content_norm:
+                # if content is normalized info content to the power 2
                 semvec[i] = semvec[i] * math.pow(info_content(joint_word), 2)
         else:
             # find the most similar word in the joint set and set the sim value
             sim_word, max_sim = most_similar_word(joint_word, sent_set)
-            semvec[i] = PHI if max_sim > PHI else 0.0
+            semvec[i] = 0.2 if max_sim > 0.2 else 0.0
             if info_content_norm:
                 semvec[i] = semvec[i] * info_content(joint_word) * info_content(sim_word)
         i = i + 1
+
     return semvec
 
 
@@ -188,8 +212,12 @@ def semantic_similarity(sentence_1, sentence_2, info_content_norm):
     words_1 = nltk.word_tokenize(sentence_1)
     words_2 = nltk.word_tokenize(sentence_2)
     joint_words = set(words_1).union(set(words_2))
+
+    # computing 2 vectors
     vec_1 = semantic_vector(words_1, joint_words, info_content_norm)
     vec_2 = semantic_vector(words_2, joint_words, info_content_norm)
+
+    # cosine similarity calculation
     return np.dot(vec_1, vec_2.T) / (np.linalg.norm(vec_1) * np.linalg.norm(vec_2))
 
 
@@ -197,14 +225,14 @@ def semantic_similarity(sentence_1, sentence_2, info_content_norm):
 
 def word_order_vector(words, joint_words, windex):
     """
-    Computes the word order vector for a sentence. The sentence is passed
-    in as a collection of words. The size of the word order vector is the
-    same as the size of the joint word set. The elements of the word order
-    vector are the position mapping (from the windex dictionary) of the
+    The sentence is passed in as a collection of words.
+    The size of the word order vector is the same as the size of the joint word set.
+    The elements of the word order vector are the position mapping (from the windex dictionary) of the
     word in the joint set if the word exists in the sentence. If the word
     does not exist in the sentence, then the value of the element is the
     position of the most similar word in the sentence as long as the similarity
-    is above the threshold ETA.
+    is above the threshold 0.4.
+
     """
     wovec = np.zeros(len(joint_words))
     i = 0
@@ -217,7 +245,7 @@ def word_order_vector(words, joint_words, windex):
             # word not in joint_words, find most similar word and populate
             # word_vector with the thresholded similarity
             sim_word, max_sim = most_similar_word(joint_word, wordset)
-            if max_sim > ETA:
+            if max_sim > 0.4:
                 wovec[i] = windex[sim_word]
             else:
                 wovec[i] = 0
@@ -233,6 +261,7 @@ def word_order_similarity(sentence_1, sentence_2):
     words_1 = nltk.word_tokenize(sentence_1)
     words_2 = nltk.word_tokenize(sentence_2)
     joint_words = list(set(words_1).union(set(words_2)))
+    # enumerate adds a counter for thr index 0=index 1=word
     windex = {x[1]: x[0] for x in enumerate(joint_words)}
     r1 = word_order_vector(words_1, joint_words, windex)
     r2 = word_order_vector(words_2, joint_words, windex)
@@ -247,26 +276,27 @@ def similarity(sentence_1, sentence_2, info_content_norm):
     parameter is True or False depending on whether information content
     normalization is desired or not.
     """
-    return DELTA * semantic_similarity(sentence_1, sentence_2, info_content_norm) + \
-           (1.0 - DELTA) * word_order_similarity(sentence_1, sentence_2)
+    return 0.85 * semantic_similarity(sentence_1, sentence_2, info_content_norm) + \
+           (1.0 - 0.85) * word_order_similarity(sentence_1, sentence_2)
 
 sentence_pairs = [
-    ["er diagram", "eer diagram"],
-    ["database structure", "database table"],
-    ["Red alcoholic drink.", "A bottle of wine."],
-    ["Red alcoholic drink.", "Fresh orange juice."],
-    ["Red alcoholic drink.", "An English dictionary."],
-    ["Red alcoholic drink.", "Fresh apple juice."],
-    ["A glass of cider.", "A full cup of apple juice."],
-    ["It is a dog.", "That must be your dog."],
-    ["It is a dog.", "It is a log."],
-    ["It is a dog.", "It is a pig."],
-    ["Dogs are animals.", "They are common pets."],
-    ["Canis familiaris are animals.", "Dogs are common pets."],
-    ["I have a pen.", "Where do you live?"],
-    ["I have a pen.", "Where is ink?"],
-    ["I have a hammer.", "Take some nails."],
-    ["I have a hammer.", "Take some apples."]
+    # ["er diagram", "eer diagram"],
+    ["that is a child", "that is a girl"],
+    ["RAM keeps things being worked with", "The CPU uses RAM as a short term memory store"],
+    ["what is the lowest?", "What is the minimum?"],
+    ["clearance procedure", "trade mechanics"]
+    # ["Red alcoholic drink.", "An English dictionary."],
+    # ["Red alcoholic drink.", "Fresh apple juice."],
+    # ["A glass of cider.", "A full cup of apple juice."],
+    # ["It is a dog.", "That must be your dog."],
+    # ["It is a dog.", "It is a log."],
+    # ["It is a dog.", "It is a pig."],
+    # ["Dogs are animals.", "They are common pets."],
+    # ["Canis familiaris are animals.", "Dogs are common pets."],
+    # ["I have a pen.", "Where do you live?"],
+    # ["I have a pen.", "Where is ink?"],
+    # ["I have a hammer.", "Take some nails."],
+    # ["I have a hammer.", "Take some apples."]
 ]
 for sent_pair in sentence_pairs:
     print("%s\t%s\t%.3f\t%.3f" % (sent_pair[0], sent_pair[1],
