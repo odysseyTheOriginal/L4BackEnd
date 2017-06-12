@@ -2,13 +2,36 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="84e6da25-75ea-4999-b50b-c9b92de92a96" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/KM Lect 1 and 2 PPT Notes.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/layoutAnalysis.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test.pdf" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/L4Project.iml" afterPath="$PROJECT_DIR$/.idea/L4Project.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/Big Data/Week 3BigData.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/Big Data/Week 3_B12BigData.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/DataStrucAlgo6.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/DataStrucAlgo6.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/Database/Database_01_Introduction.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/Database/Database_02_lecture_2.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/Database/Database_02_lecture_2.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/Database/Database_03_lecture_3_new.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/Database/Database_04.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/Database/Database_lecture_5_new.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/Database/Database_lecture_5_new.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/Database/Database_lecture_6_new.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/Database/Database_lecture_7_new mid.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/Database/Database_lecture_8_new mid.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/PrinciplesofMana5.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/PrinciplesofMana5.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/SCM/Introduction SCM.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/SCM/IntroductionSCM.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/SCM/Operational Issues SCM.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/SCM/Operational Issues SCM.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/SCM/Purchasing Management SCM.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/SCM/Purchasing Management SCM.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/SCM/Supply chain.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/SCM/Supply chain.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/Strategic Management/E3 - E4 Assessing the Industry.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/Strategic Management/E7 - Ensuring the position.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/Strategic Management/Strategic12.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/Strategic Management/Strategic12.txt" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/pdfExtract.py" afterPath="$PROJECT_DIR$/PDFExtract.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KeyPhrasesNew.py" afterPath="$PROJECT_DIR$/KeyPhrasesNew.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,7 +45,18 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="KeyPhrasesNew.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/KeyPhrasesNew.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1717">
+              <caret line="156" column="28" lean-forward="true" selection-start-line="156" selection-start-column="28" selection-end-line="156" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -77,7 +111,7 @@
         <option value="$PROJECT_DIR$/QuestionRecognition.py" />
         <option value="$PROJECT_DIR$/Clustering.py" />
         <option value="$PROJECT_DIR$/FindKeyWords.py" />
-        <option value="$USER_HOME$/Desktop/sagara sir/keyphrase/879414-767dd52cab12528e70735fedc3e2c39d88106835/879414-767dd52cab12528e70735fedc3e2c39d88106835/nltk-intro.py" />
+        <option value="$PROJECT_DIR$/../../sagara sir/keyphrase/879414-767dd52cab12528e70735fedc3e2c39d88106835/879414-767dd52cab12528e70735fedc3e2c39d88106835/nltk-intro.py" />
         <option value="$PROJECT_DIR$/KeyphraseExtraction.py" />
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/PDFExtract.py" />
@@ -87,10 +121,10 @@
         <option value="$PROJECT_DIR$/TestingRAKE.py" />
         <option value="$PROJECT_DIR$/passlist.py" />
         <option value="$PROJECT_DIR$/FormatList.py" />
-        <option value="$PROJECT_DIR$/KeyPhrasesNew.py" />
         <option value="$PROJECT_DIR$/SimpleSemanticMatch.py" />
         <option value="$PROJECT_DIR$/WordnetSimilarity.py" />
         <option value="$PROJECT_DIR$/SemanticMatch.py" />
+        <option value="$PROJECT_DIR$/KeyPhrasesNew.py" />
       </list>
     </option>
   </component>
@@ -118,27 +152,27 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="L4Project" />
+              <option name="myItemId" value="L4BackEnd" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="L4Project" />
+              <option name="myItemId" value="L4BackEnd" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/BEusingflask" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunManager" selected="Python.KeyPhrasesNew">
     <configuration default="false" name="KeyPhrasesNew" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -392,25 +426,25 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1378" height="744" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33880597" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33880597" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41435564" sideWeight="0.5177252" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3213703" sideWeight="0.45716396" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32952693" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.365416" sideWeight="0.48227474" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3213703" sideWeight="0.45716396" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32913387" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.365416" sideWeight="0.48227474" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -440,7 +474,7 @@
           <option name="timeStamp" value="30" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$USER_HOME$/Desktop/sagara sir/keyphrase/879414-767dd52cab12528e70735fedc3e2c39d88106835/879414-767dd52cab12528e70735fedc3e2c39d88106835/nltk-intro.py</url>
+          <url>file://$PROJECT_DIR$/../../sagara sir/keyphrase/879414-767dd52cab12528e70735fedc3e2c39d88106835/879414-767dd52cab12528e70735fedc3e2c39d88106835/nltk-intro.py</url>
           <line>35</line>
           <option name="timeStamp" value="46" />
         </line-breakpoint>
@@ -548,7 +582,7 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/Desktop/sagara sir/keyphrase/879414-767dd52cab12528e70735fedc3e2c39d88106835/879414-767dd52cab12528e70735fedc3e2c39d88106835/nltk-intro.py">
+    <entry file="file://$PROJECT_DIR$/../../sagara sir/keyphrase/879414-767dd52cab12528e70735fedc3e2c39d88106835/879414-767dd52cab12528e70735fedc3e2c39d88106835/nltk-intro.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="33" column="6" lean-forward="false" selection-start-line="33" selection-start-column="6" selection-end-line="33" selection-end-column="6" />
@@ -571,7 +605,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/layoutAnalysis.py" />
-    <entry file="file://$USER_HOME$/Desktop/sagara sir/keyphrase/RAKE-tutorial_rake_tutorial.py at master · zelandiya_RAKE-tutorial · GitHub.html" />
+    <entry file="file://$PROJECT_DIR$/../../sagara sir/keyphrase/RAKE-tutorial_rake_tutorial.py at master · zelandiya_RAKE-tutorial · GitHub.html" />
     <entry file="file://$PROJECT_DIR$/FindKeyWords.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -778,17 +812,7 @@
         <state relative-caret-position="228">
           <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
           <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/KeyPhrasesNew.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2941">
-          <caret line="193" column="20" lean-forward="false" selection-start-line="193" selection-start-column="20" selection-end-line="193" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#0#39#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -804,6 +828,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="20" column="38" lean-forward="true" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/KeyPhrasesNew.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1717">
+          <caret line="156" column="28" lean-forward="true" selection-start-line="156" selection-start-column="28" selection-end-line="156" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>

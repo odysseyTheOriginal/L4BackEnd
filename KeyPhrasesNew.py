@@ -162,7 +162,7 @@ if __name__ == '__main__':
     import pandas as pd
     # texts = list(pd.read_csv('data/example.txt')['abstract'])
 
-    rankedDocuments = ['D:/L4Project/pdf/SCM/IntroductionSCM.txt','D:/L4Project/pdf/SCM/Operational Issues SCM.txt','D:/L4Project/pdf/SCM/Purchasing Management SCM.txt','D:/L4Project/pdf/SCM/Supply chain.txt'];
+    rankedDocuments = ['C:/SCM/IntroductionSCM.txt','C:/pdf/SCM/Operational Issues SCM.txt','C:/pdf/SCM/Purchasing Management SCM.txt','C:/pdf/SCM/Supply chain.txt'];
 
     # rankedDocuments = ['D:/L4Project/pdf/Database_04.txt' ,'D:/L4Project/pdf/Database_lecture_8_new mid.txt' , "D:/L4Project/pdf/Database_lecture_6_new.txt", 'D:/L4Project/pdf/Database_03_lecture_3_new.txt' ];
     texts = list();

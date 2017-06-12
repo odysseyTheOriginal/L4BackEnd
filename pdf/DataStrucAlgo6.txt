@@ -1,81 +1,0 @@
-Data Structures and
-Algorithms
-Lecture 06
-
-Road Map
-Introduction – Trees
- Trees Terminology
- Binary Tree
- Traversals
-
-
-Introduction
-
-
-Non- linear data structure
-
-
-
-Used to represent data, containing
-hierarchical relationship among elements
- University Structure
- Table of Contents
-
-a
-
-Terminology
-
-Some other definitions
-
-Define Levels
-
-
-
-Length of a path is one less than the number of
-nodes in a path.
-
-
-
-Node to Node(itself) – length of path is zero
-
-
-
-Height of a node – length of the longest path from
-node to a leaf.
-
-
-
-Height of a tree – the height of the root node.
-
-
-
-Depth of a node – length of the path from the root
-to that node.
-
-Recursive Definition
-
-Binary Trees
-
-Tree Traversal
-
-
-Methods of visiting(processing) each node in
-the tree exactly one time.
-
-Breadth First
- Depth First
-
-
-Algorithm ( Breadth First – Level by Level)
-
-Depth First Traversal
-Preorder
- Inorder
- Postorder
-
-
-Exercise
-
-Questions ??
-
-
