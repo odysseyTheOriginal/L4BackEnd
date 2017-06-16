@@ -1,4 +1,3 @@
-import re
 import string
 import operator
 import numpy as np
@@ -9,15 +8,10 @@ from nltk.chunk.regexp import RegexpParser
 from nltk.chunk import tree2conlltags
 from nltk.corpus import stopwords
 from itertools import chain, groupby
-from operator import itemgetter
 from sklearn.feature_extraction.text import TfidfVectorizer
-from nltk.corpus import wordnet as wn
-from nltk.stem.lancaster import LancasterStemmer
 import difflib
 from collections import defaultdict
-import json
 import re
-from nltk import PorterStemmer
 from FormatList import formatData
 
 punct_re = re.compile('[{}]'.format(re.escape(string.punctuation)))
@@ -157,14 +151,17 @@ def createuniquelist(wordlist):
     # print(uniqueWordList);
     return uniqueWordList
 
-
 if __name__ == '__main__':
     import pandas as pd
     # texts = list(pd.read_csv('data/example.txt')['abstract'])
 
-    rankedDocuments = ['C:/pdf/SCM/IntroductionSCM.txt','C:/pdf/SCM/Operational Issues SCM.txt','C:/pdf/SCM/Purchasing Management SCM.txt','C:/pdf/SCM/Supply chain.txt'];
+    # rankedDocuments = ['C:/pdf/SCM/IntroductionSCM.txt','C:/pdf/SCM/Operational Issues SCM.txt','C:/pdf/SCM/Purchasing Management SCM.txt','C:/pdf/SCM/Supply chain.txt'];
 
-    # rankedDocuments = ['D:/L4Project/pdf/Database_04.txt' ,'D:/L4Project/pdf/Database_lecture_8_new mid.txt' , "D:/L4Project/pdf/Database_lecture_6_new.txt", 'D:/L4Project/pdf/Database_03_lecture_3_new.txt' ];
+    # rankedDocuments = ['C:/pdf/Database/Database_04.txt' ,'C:/pdf/Database/Database_lecture_8_new mid.txt' , "C:/pdf/Database/Database_lecture_6_new.txt", 'C:/pdf/Database/Database_03_lecture_3_new.txt' ];
+    rankedDocuments = ['C:/pdf/Database/Database_04.txt', 'C:/pdf/Database/Database_lecture_8_new mid.txt',
+                       "C:/pdf/Database/Database_lecture_6_new.txt", 'C:/pdf/Database/Database_03_lecture_3_new.txt',
+                       ];
+
     texts = list();
     for doc in rankedDocuments:
         with open(doc, encoding="utf8") as f:
@@ -183,12 +180,21 @@ if __name__ == '__main__':
         returnfromuniqueordlist.append(createuniquelist(ind))
 
     for i, j in zip(returnfromuniqueordlist, rankedDocuments):
-        d[j].append(i);
+        jj = j.split(':');
+        jjj = jj[1]
+        d[jjj].append(i);
+
+    course_module = {'/pdf/Database/Database_04.txt': 'Database Management Systems',
+                     '/pdf/Database/Database_lecture_8_new mid.txt': 'Database Management Systems',
+                     '/pdf/Database/Database_lecture_6_new.txt': 'Database Management Systems',
+                     '/pdf/Database/Database_03_lecture_3_new.txt': 'Advanced Database Management Systems'};
 
     # pass the dictionary as a list to frontend
 
-    listToFront = formatData(d, returnfromuniqueordlist);
+    listToFront = formatData(d, returnfromuniqueordlist, course_module);
     print(listToFront)
+    print(d)
+    print("====courseModuleList====",course_module);
 
     # passinglist = list(d.items())
     # print(passinglist);

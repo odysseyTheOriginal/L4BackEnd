@@ -221,53 +221,6 @@ def semantic_similarity(sentence_1, sentence_2, info_content_norm):
     return np.dot(vec_1, vec_2.T) / (np.linalg.norm(vec_1) * np.linalg.norm(vec_2))
 
 
-######################### word order similarity ##########################
-
-def word_order_vector(words, joint_words, windex):
-    """
-    The sentence is passed in as a collection of words.
-    The size of the word order vector is the same as the size of the joint word set.
-    The elements of the word order vector are the position mapping (from the windex dictionary) of the
-    word in the joint set if the word exists in the sentence. If the word
-    does not exist in the sentence, then the value of the element is the
-    position of the most similar word in the sentence as long as the similarity
-    is above the threshold 0.4.
-
-    """
-    wovec = np.zeros(len(joint_words))
-    i = 0
-    wordset = set(words)
-    for joint_word in joint_words:
-        if joint_word in wordset:
-            # word in joint_words found in sentence, just populate the index
-            wovec[i] = windex[joint_word]
-        else:
-            # word not in joint_words, find most similar word and populate
-            # word_vector with the thresholded similarity
-            sim_word, max_sim = most_similar_word(joint_word, wordset)
-            if max_sim > 0.4:
-                wovec[i] = windex[sim_word]
-            else:
-                wovec[i] = 0
-        i = i + 1
-    return wovec
-
-
-def word_order_similarity(sentence_1, sentence_2):
-    """
-    Computes the word-order similarity between two sentences as the normalized
-    difference of word order between the two sentences.
-    """
-    words_1 = nltk.word_tokenize(sentence_1)
-    words_2 = nltk.word_tokenize(sentence_2)
-    joint_words = list(set(words_1).union(set(words_2)))
-    # enumerate adds a counter for thr index 0=index 1=word
-    windex = {x[1]: x[0] for x in enumerate(joint_words)}
-    r1 = word_order_vector(words_1, joint_words, windex)
-    r2 = word_order_vector(words_2, joint_words, windex)
-    return 1.0 - (np.linalg.norm(r1 - r2) / np.linalg.norm(r1 + r2))
-
-
 ######################### overall similarity ##########################
 
 def similarity(sentence_1, sentence_2, info_content_norm):
@@ -276,29 +229,5 @@ def similarity(sentence_1, sentence_2, info_content_norm):
     parameter is True or False depending on whether information content
     normalization is desired or not.
     """
-    return 0.85 * semantic_similarity(sentence_1, sentence_2, info_content_norm) + \
-           (1.0 - 0.85) * word_order_similarity(sentence_1, sentence_2)
 
-sentence_pairs = [
-    # ["er diagram", "eer diagram"],
-    ["that is a child", "that is a girl"],
-    ["RAM keeps things being worked with", "The CPU uses RAM as a short term memory store"],
-    ["what is the lowest?", "What is the minimum?"],
-    ["clearance procedure", "trade mechanics"]
-    # ["Red alcoholic drink.", "An English dictionary."],
-    # ["Red alcoholic drink.", "Fresh apple juice."],
-    # ["A glass of cider.", "A full cup of apple juice."],
-    # ["It is a dog.", "That must be your dog."],
-    # ["It is a dog.", "It is a log."],
-    # ["It is a dog.", "It is a pig."],
-    # ["Dogs are animals.", "They are common pets."],
-    # ["Canis familiaris are animals.", "Dogs are common pets."],
-    # ["I have a pen.", "Where do you live?"],
-    # ["I have a pen.", "Where is ink?"],
-    # ["I have a hammer.", "Take some nails."],
-    # ["I have a hammer.", "Take some apples."]
-]
-for sent_pair in sentence_pairs:
-    print("%s\t%s\t%.3f\t%.3f" % (sent_pair[0], sent_pair[1],
-        similarity(sent_pair[0], sent_pair[1], False),
-        similarity(sent_pair[0], sent_pair[1], True)));
+    return semantic_similarity(sentence_1, sentence_2, info_content_norm)
